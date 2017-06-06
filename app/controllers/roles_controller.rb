@@ -32,13 +32,16 @@ class RolesController < ApplicationController
     @role.destroy
     redirect_to root_path
   end
-end
 
 
-def role_params
-  params.require(:role).permit(:name, :description)
-end
+private
 
-def set_role
-    @role = Role.find(params[:id])
+  def role_params
+    params.require(:role).permit(:name, :description)
+  end
+
+  def set_role
+      @role = Role.find(params[:id])
+  end
+
 end
