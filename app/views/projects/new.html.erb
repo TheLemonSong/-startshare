@@ -1,0 +1,19 @@
+<div class="content-wrapper">
+  <div class="container" style="margin-top: 60px; margin-bottom: -60px;">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+        <h2>Project Details</h2>
+        <hr>
+        <%= simple_form_for(@project) do |f| %>
+          <%= f.input :name %>
+          <%= f.input :summary %>
+          <%= f.input :details %>
+          <%= f.input :start_date %>
+          <%= f.input :end_date %>
+          <%= f.input :stage %>
+          <%= f.submit :create %>
+        <% end %>
+     </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<h1>Applications#new</h1>
+<p>Find me in app/views/roles/new.html.erb</p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <%= simple_form_for(@application) do |f| %>
+        <%= f.input :status %>
+        <%= f.submit :create %>
+      <% end %>
+    </div>
+  </div>
+</div>
