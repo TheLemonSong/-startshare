@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_service, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   def index
     @projects = Project.all
@@ -27,7 +27,7 @@ class ProjectsController < ApplicationController
 
   def update
     @service.update(service_params)
-    redirect_to service_path(@service)
+    redirect_to project_path(@project)
   end
 
   def destroy

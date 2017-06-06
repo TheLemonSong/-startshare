@@ -1,0 +1,16 @@
+<div class="content-wrapper">
+  <div class="container">
+    <br>
+    <h1 class="text-center">All projects</h1>
+    <hr>
+    <div class="row">
+        <% @projects.each do |project| %>
+          <div class="col-xs-12 col-sm-4">
+
+              <%= render "projects/card", project: project %>
+
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>
