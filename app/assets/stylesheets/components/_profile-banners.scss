@@ -1,0 +1,58 @@
+.color-fill-banner {
+  color: white;
+  text-align: center;
+  height: 15vh;
+  width: 75%;
+  background-size: cover !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+  background-color: #99c2ff;
+  margin-right: 13%;
+  margin-left: 13%;
+  border-top-right-radius: 12px;
+  border-top-left-radius: 12px;
+}
+
+.info-banner {
+  border-radius: 3px;
+  border: none;
+  margin-bottom: 15px;
+  margin-left: 13%;
+  margin-right: 13%;
+  background-color: #f2f2f2;
+  display: flex;
+  height: 45vh;
+  width: 75%;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-skill-banner {
+  border-radius: 3px;
+  border: none;
+  margin-bottom: 15px;
+  margin-left: 13%;
+  margin-right: 13%;
+  background-color: #f2f2f2;
+  display: flex;
+  height: 35vh;
+  width: 75%;
+  align-items: center;
+  justify-content: center;
+}
+
+.skill {
+  border: none;
+  color: #666666;
+  background: #f2f2f2;
+  text-align: left;
+}
+
+.skill-header {
+  border: none;
+  color: #666666;
+  background: #f2f2f2;
+  text-align: center;
+}
