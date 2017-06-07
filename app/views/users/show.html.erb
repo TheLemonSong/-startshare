@@ -1,20 +1,22 @@
 
 
-<div class="container">
-  <div class="color-fill-banner">
-  </div>
-  <div class="info-banner text-center" style="background: #f2f2f2">
-    <div>
-      <h4><strong>Name:</strong> <%= @user.first_name %> <%= @user.last_name %></h4>
-      <h4><strong>Location:</strong> <%= @user.location %></h4>
-    </div>
-  </div>
-  <div class="user-skill-banner">
-  </div>
-  <div class="button-center">
-    <% if current_user.id == @user.id %>
-      <%= link_to "Edit my profile", edit_user_path(current_user), class: "btn btn-primary" %>
-    <% end %>
+
+<div class="color-fill-banner">
+</div>
+<div class="profile-banner">
+  <h2><strong><%= @user.first_name %> <%= @user.last_name %></strong></h2>
+
+  <div class="avatardiv">
+    <%= image_tag "face_placeholder.png", class: "avatar-square" %>
   </div>
 
+</div>
+
+<div class="profile-skill-banner">
+  <h2><strong>Skills</strong></h2>
+</div>
+<div class="profile-edit-button">
+  <% if current_user.id == @user.id %>
+    <%= link_to "Edit my profile", edit_user_path(current_user), class: "btn btn-primary" %>
+  <% end %>
 </div>
