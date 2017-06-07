@@ -7,6 +7,7 @@
 
     <%= f.input :first_name, required: true, autofocus: true %>
     <%= f.input :last_name %>
+    <%= f.inout :education %>
     <%= f.input :city %>
     <%= f.input :zip %>
     <%= f.input :country, priority: ["GB", "FR", "DE"], include_blank: 'Select a country' %>
