@@ -3,4 +3,8 @@ class PagesController < ApplicationController
 
   def home
   end
+
+  def dashboard
+    @projects = Project.where(user_id: current_user)
+  end
 end
