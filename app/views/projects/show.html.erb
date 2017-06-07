@@ -13,6 +13,7 @@
 
         <h3><strong>Name:</strong> <%= @project.name %> </h3>
         <h3><strong>Summary:</strong> <%= @project.summary %></h3>
+        <%= link_to "Add Role", new_project_role_path(@project), class: "btn btn-warning" %>
     </div>
   </div>
 </div>
