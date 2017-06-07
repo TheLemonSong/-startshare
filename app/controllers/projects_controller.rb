@@ -26,7 +26,7 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    @service.update(service_params)
+    @project.update(project_params)
     redirect_to project_path(@project)
   end
 
