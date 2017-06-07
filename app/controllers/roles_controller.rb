@@ -7,13 +7,16 @@ class RolesController < ApplicationController
 
   def new
     @role = Role.new
+    @project = Project.find(params[:project_id])
   end
 
   def create
     @role = Role.new(role_params)
+    @project = Project.find(params[:project_id])
+    @role.project = @project
     # @role.user = current_user
     if @role.save
-      redirect_to role_path(@role)
+      redirect_to project_path(@project)
     else
       render :new
     end
