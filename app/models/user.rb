@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :projects, dependent: :destroy # This deletes the users projects when user is deleted.
   has_many :applications, dependent: :destroy # This deletes the users applications when user is deleted.
 
-  # validates :email, presence: true, uniqueness: :true,
+  validates :email, presence: true, uniqueness: :true
   #           :first_name, presence: true,
   #           :last_name, presence: true,
   #           :location, presence: true,

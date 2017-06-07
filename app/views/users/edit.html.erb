@@ -1,13 +1,19 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-      <h1 class="text-center"><strong>Edit Profile</strong></h1>
-      <%= simple_form_for(@user) do |f| %>
-        <%= f.input :first_name %>
-        <%= f.input :last_name %>
-        <%= f.input :location %>
-        <%= f.submit :update %>
-      <% end %>
+<div class="edit-wrapper" style="background: #f2f2f2">
+  <div class="content-wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+          <br>
+          <h1 class="text-center"><strong><em>Edit Profile</em></strong></h1>
+          <hr>
+          <%= simple_form_for(@user) do |f| %>
+            <%= f.input :first_name %>
+            <%= f.input :last_name %>
+            <%= f.input :location %>
+            <%= f.submit :update %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
