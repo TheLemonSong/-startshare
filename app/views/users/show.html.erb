@@ -1,22 +1,23 @@
+<div class="container-fluid profile-banner">
+  <div class="user-img" style="background-image: url('<%= image_path "face_placeholder.png" %>');">
 
-
-
-<div class="color-fill-banner">
-</div>
-<div class="profile-banner">
-  <h2><%= @user.first_name %> <%= @user.last_name %></h2>
-
-  <div class="avatardiv">
-    <%= image_tag "face_placeholder.png", class: "avatar-square" %>
   </div>
-
-</div>
-
-<div class="profile-skill-banner">
-  <h2><strong>Skills</strong></h2>
-</div>
-<div class="profile-edit-button">
+  <div class="user-info">
+    <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+    <p><i class="fa fa-globe fa-fw"></i> <%= @user.city %></p>
+    <p><i class="fa fa-graduation-cap fa-fw"></i> <%= @user.education %></p>
+  </div>
   <% if current_user.id == @user.id %>
-    <%= link_to "Edit my profile", edit_user_path(current_user), class: "btn btn-primary" %>
+    <%= link_to edit_user_path(current_user), class: "edit-profile-btn" do %>
+      <i class="fa fa-wrench"></i>
+    <% end %>
   <% end %>
 </div>
+<div class="container">
+<div class="text-center"><h2><strong>Skills</strong></h2></div>
+
+  <div class="row">
+    <!-- Put skills here with cols -->
+  </div>
+</div>
+

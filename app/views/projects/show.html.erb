@@ -23,6 +23,7 @@
       <% @project.roles.each do |role| %>
         <h3><strong>Role:</strong> <%= role.name %></h3>
         <h3><strong>Description:</strong> <%= role.description %></h3>
+        <%= link_to "Apply", role_applications_path(role), method: :post, class: "btn btn-warning" %>
       <% end %>
     <%end%>
   </div>
