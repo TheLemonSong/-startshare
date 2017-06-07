@@ -4,6 +4,7 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+
     <%= f.input :first_name, required: true, autofocus: true %>
     <%= f.input :last_name, required: true %>
     <%= f.input :city, required: true %>
@@ -12,6 +13,14 @@
     <%= f.input :email, required: true %>
     <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
     <%= f.input :password_confirmation, required: true %>
+    <%= f.input :first_name, autofocus: true %>
+    <%= f.input :last_name %>
+    <%= f.input :city %>
+    <%= f.input :zip %>
+    <%= f.input :country, priority: ["GB", "FR", "DE"], include_blank: 'Select a country' %>
+    <%= f.input :email %>
+    <%= f.input :password, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+    <%= f.input :password_confirmation %>
   </div>
 
   <div class="form-actions">
