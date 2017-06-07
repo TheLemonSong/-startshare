@@ -5,5 +5,8 @@ Rails.application.routes.draw do
   resources :projects do
     resources :roles, only: [:new, :create, :edit, :update]
   end
-  resources :applications, only: [:new, :create, :show]
+  resources :roles, only: [] do
+      resources :applications, only: [:create]
+  end
+  resources :applications, only: [:show]
 end
