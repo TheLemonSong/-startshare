@@ -23,7 +23,7 @@
     <h1 class="text-center">Roles applied for</h1>
       <hr>
     <div class="row">
-      <% if current_user.role.empty? %>
+      <% if current_user.roles.empty? %>
         <h2 class="text-center"><%= "You have no applications pending" %></h2>
         <% else %>
           <% @roles.each do |role| %>
