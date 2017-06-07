@@ -9,7 +9,10 @@
           <%= simple_form_for(@user) do |f| %>
             <%= f.input :first_name %>
             <%= f.input :last_name %>
-            <%= f.input :location %>
+            <%= f.input :education %>
+            <%= f.input :city %>
+            <%= f.input :zip %>
+            <%= f.input :country %>
             <%= f.submit :update %>
           <% end %>
         </div>
