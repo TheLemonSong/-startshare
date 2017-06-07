@@ -1,54 +1,56 @@
-.color-fill-banner {
-  height: 15vh;
-  width: 75%;
-  background-color: #99c2ff;
-  margin: auto;
-  margin-top: 15px;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
-  margin-bottom: 0px;
-}
+// .color-fill-banner {
+//   height: 5vh;
+//   width: 75%;
+//   background-color: #99c2ff;
+//   margin: auto;
+//   margin-top: 15px;
+//   border-top-right-radius: 5px;
+//   border-top-left-radius: 5px;
+//   margin-bottom: 0px;
+// }
 
-.info-container{
-  height: 45vh;
-  width: 75%;
-  margin-top: none;
-}
+// .info-container{
+//   height: 45vh;
+//   width: 75%;
+//   margin-top: none;
+// }
 
 .profile-banner {
-  border-radius: 3px;
-  border: none;
-  margin-bottom: 0px;
-  margin: auto;
-  background-color: #f2f2f2;
-  height: 45vh;
-  width: 75%;
-  h2 {
-    text-align: center;
-    margin-top: 0px !important;
-    font-family: Georgia;
+  height: 30vh;
+  width: 80%;
+  background: linear-gradient(#36D1DC, #5B86E5);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  .user-img {
+    width: 80px;
+    height: 80px;
+    background-size: cover;
+    background-position: center;
+    margin-right: 30px;
+    border-radius: 50%;
+    box-shadow: 0px 6px 11px rgba(0, 0, 0, 0.30);
+  }
+
+  .user-info {
+    h1 {
+      color: white;
+      font-weight: 900;
+      text-shadow: 1px 1px 2px rgba(51, 51, 51, 0.4);
+    }
+    p {
+      color: white;
+      opacity: 0.8;
+    }
   }
 }
 
-.profile-skill-banner {
-  border-radius: 3px;
-  border: none;
-  margin: auto;
-  background-color: #f2f2f2;
-  height: 35vh;
-  width: 75%;
-  h2 {
-    text-align: center;
-  }
+.edit-profile-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: white;
+  font-size: 20px;
 }
 
-.profile-edit-button {
-  margin-left: 12.5%;
-}
-
-.avatardiv {
-  img {
-    display: block;
-    margin: auto;
-  }
-}

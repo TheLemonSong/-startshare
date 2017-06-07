@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20170607150840) do
+=======
+ActiveRecord::Schema.define(version: 20170607160609) do
+>>>>>>> master
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +71,7 @@ ActiveRecord::Schema.define(version: 20170607150840) do
     t.string   "GH_url"
     t.string   "zip"
     t.string   "country"
+    t.string   "education"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

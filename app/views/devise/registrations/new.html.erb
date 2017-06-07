@@ -6,15 +6,8 @@
   <div class="form-inputs">
 
     <%= f.input :first_name, required: true, autofocus: true %>
-    <%= f.input :last_name, required: true %>
-    <%= f.input :city, required: true %>
-    <%= f.input :zip, required: true %>
-    <%= f.input :country, priority: ['GB'] %>
-    <%= f.input :email, required: true %>
-    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-    <%= f.input :password_confirmation, required: true %>
-    <%= f.input :first_name, autofocus: true %>
     <%= f.input :last_name %>
+    <%= f.inout :education %>
     <%= f.input :city %>
     <%= f.input :zip %>
     <%= f.input :country, priority: ["GB", "FR", "DE"], include_blank: 'Select a country' %>
