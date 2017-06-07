@@ -6,4 +6,5 @@ Rails.application.routes.draw do
     resources :roles, only: [:new, :create, :edit, :update]
   end
   resources :applications, only: [:new, :create, :show]
+  resources :users, only: [:new, :edit, :update, :create, :show, :destroy]
 end
