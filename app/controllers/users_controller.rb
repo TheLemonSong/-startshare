@@ -38,6 +38,8 @@ def set_user
 end
 
 def user_params
+
+  params.require(:user).permit(:first_name, :last_name, :email, :city, :zip, :country)
   params.require(:user).permit(:first_name, :last_name, :email, :location, :zip, :country)
 end
 
