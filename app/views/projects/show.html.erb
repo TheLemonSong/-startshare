@@ -15,5 +15,15 @@
         <h3><strong>Summary:</strong> <%= @project.summary %></h3>
         <%= link_to "Add Role", new_project_role_path(@project), class: "btn btn-warning" %>
     </div>
+    <hr>
+    <h2>Current roles available for this project:</h2>
+    <% if @project.roles.empty? %>
+      <%= "There are no roles available for this project" %>
+    <% else %>
+      <% @project.roles.each do |role| %>
+        <h3><strong>Role:</strong> <%= role.name %></h3>
+        <h3><strong>Description:</strong> <%= role.description %></h3>
+      <% end %>
+    <%end%>
   </div>
 </div>
