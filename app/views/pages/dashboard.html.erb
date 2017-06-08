@@ -26,7 +26,7 @@
       <% if current_user.roles.empty? %>
         <h2 class="text-center"><%= "You have no applications pending" %></h2>
         <% else %>
-          <% @roles.each do |role| %>
+          <% current_user.roles.each do |role| %>
             <div class="col-xs-12 col-sm-4">
               <div class="card">
                 <%= render "roles/card", role: role %>
