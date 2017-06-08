@@ -1,4 +1,4 @@
-<div class="edit-wrapper" style="color:white; background: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_path 'background1.jpg' %>')">
+<div class="edit-wrapper" style="color:white; background: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_path 'background3.jpg' %>')">
   <div class=content-wrapper>
     <div class="container">
       <div class="row">
@@ -21,10 +21,11 @@
             <%= f.input :email %>
             <%= f.input :password, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
             <%= f.input :password_confirmation %>
-          </div>
+
 
           <div class="form-actions">
-            <%= f.button :submit, "Sign up" %>
+            <%= f.submit class: "btn btn-primary" %>
+          </div>
           </div>
         <% end %>
 
