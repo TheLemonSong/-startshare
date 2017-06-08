@@ -23,8 +23,26 @@
       <% @project.roles.each do |role| %>
         <h3><strong>Role:</strong> <%= role.name %></h3>
         <h3><strong>Description:</strong> <%= role.description %></h3>
-        <%= link_to "Apply", role_applications_path(role), method: :post, class: "btn btn-warning" %>
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" style="left: 20px">
+             Apply
+         </button>
+        <%#= link_to "Apply", role_applications_path(role), method: :post, class: "btn btn-warning" %>
       <% end %>
     <%end%>
   </div>
+</div>
+<!-- Modal -->
+ <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+   <div class="modal-dialog" role="document">
+     <div class="modal-content">
+       <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+       </div>
+       <div class="modal-body">
+         <h2 class="modal-title" id="myModalLabel">Application has been sent!</h2>
+         <%= link_to 'Back to dashboard', dashboard_path, class: "btn btn-success" %>
+       </div>
+     </div>
+   </div>
+ </div>
 </div>
