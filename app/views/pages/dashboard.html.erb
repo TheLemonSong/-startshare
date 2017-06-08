@@ -13,8 +13,29 @@
           </div>
         <% end %>
       <% else %>
-        <h1 class="text-center"><%= "You have no projects at the moment" %></h1>
+        <h2 class="text-center"><%= "You have no projects at the moment" %></h2>
       <% end %>
     </div>
+      <hr>
+      <br>
+
+      <br>
+    <h1 class="text-center">Roles applied for</h1>
+      <hr>
+    <div class="row">
+      <% if current_user.roles.empty? %>
+        <h2 class="text-center"><%= "You have no applications pending" %></h2>
+        <% else %>
+          <% @roles.each do |role| %>
+            <div class="col-xs-12 col-sm-4">
+              <div class="card">
+                <%= render "roles/card", role: role %>
+              </div>
+            </div>
+          <% end %>
+      <% end %>
+    </div>
+      <hr>
+      <br>
   </div>
 </div>
