@@ -7,8 +7,8 @@
     <p><i class="fa fa-globe fa-fw"></i> <%= @user.city %></p>
     <p><i class="fa fa-graduation-cap fa-fw"></i> <%= @user.education %></p>
   </div>
-  <% if current_user.id == @user.id %>
-    <%= link_to edit_user_path(current_user), class: "edit-profile-btn" do %>
+  <% if policy(@user).update? %>
+    <%= link_to edit_user_path(@user), class: "edit-profile-btn" do %>
       <i class="fa fa-wrench"></i>
     <% end %>
   <% end %>
