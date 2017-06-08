@@ -6,6 +6,6 @@ class Project < ApplicationRecord
   validates :summary, presence: true
   validates :details, presence: true
   validates :start_date, presence: true
-  #validates :end_date, presence: true,
+  validates :end_date, presence: true
   validates :stage, presence: true
 end
