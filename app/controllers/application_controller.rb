@@ -19,6 +19,18 @@ class ApplicationController < ActionController::Base
   devise_parameter_sanitizer.permit(:account_update, keys: [:username])
   end
 
+  private
+
+  def after_sign_in_path_for(resource_or_scope)
+    dashboard_path
+  end
+
+  def require_login
+    unless current_user
+      redirect_to new_user_session_path
+    end
+  end
+
   def after_sign_in_path_for(resource_or_scope)
     dashboard_path
   end
