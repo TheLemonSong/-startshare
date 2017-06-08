@@ -28,20 +28,62 @@
 
       <br>
     <h1 class="text-center">Roles applied for</h1>
-      <hr>
+      <br>
+
+    <!-- APPLICATIONS -->
     <div class="row">
-      <% if current_user.roles.empty? %>
-        <h2 class="text-center"><%= "You have no applications pending" %></h2>
-        <% else %>
-          <% current_user.roles.each do |role| %>
-            <div class="col-xs-12 col-sm-4">
-              <div class="card">
-                <%= render "roles/card", role: role %>
+      <% if current_user.applications.empty? %>
+        <h2>You have no applications</h2>
+      <% else %>
+        <% current_user.applications.each do |application| %>
+          <!-- card -->
+          <div class="application-card">
+          <!-- top layer -->
+            <div class="application-card-top flex">
+              <!-- left -->
+              <div class="application-card-top-left">
+                <div class="flex-column" style="margin-bottom: 20px;">
+                  <h6>ROLE :</h6>
+                  <h3><%= application.role.name %></h3>
+                </div>
+                <div class="flex-column">
+                  <h6>PROJECT :</h6>
+                  <h3><%= application.role.project.name %></h3>
+                </div>
+              </div>
+              <!-- middle -->
+              <div class="application-card-top-middle flex-center">
+                <div class="status-card">
+                  <%= application.status.capitalize %>
+                </div>
+              </div>
+              <!-- right -->
+              <div class="application-card-top-right">
+
               </div>
             </div>
-          <% end %>
+            <!-- bottom layer -->
+            <div class="application-card-bottom">
+              <h6>DESCRIPTION :</h6>
+              <p><%= application.role.description %></p>
+            </div>
+          </div>
+        <% end %>
       <% end %>
     </div>
+<!--     <div class="row">
+      <%# if current_user.roles.empty? %>
+        <h2 class="text-center"><%# "You have no applications pending" %></h2>
+        <%# else %>
+          <%# current_user.roles.each do |role| %>
+            <div class="col-xs-12 col-sm-4">
+              <div class="card">
+                <%# render "roles/card", role: role %>
+              </div>
+            </div>
+          <%# end %>
+      <%# end %>
+    </div> -->
       <hr>
       <br>
   </div>

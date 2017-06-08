@@ -27,3 +27,20 @@
 .content-wrapper {
   min-height: calc(100vh - 178px);
 }
+
+// Flexbox
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
