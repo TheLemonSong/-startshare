@@ -4,12 +4,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :projects, dependent: :destroy # This deletes the users projects when user is deleted.
-  has_many :applications, dependent: :destroy # This deletes the users applications when user is deleted.
-  has_many :roles, through: :applications
+  has_many :applications, through: :roles, dependent: :destroy # This deletes the users applications when user is deleted.
+  has_many :roles, through: :projects
+
   validates :email, presence: true, uniqueness: :true
-  #           :first_name, presence: true,
-  #           :last_name, presence: true,
-  #           :location, presence: true,
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :city, presence: true
+  validates :zip, presence: :true
+  validates :country, presence: :true
 end
 
 
