@@ -7,15 +7,20 @@
       <% if @projects.any? %>
         <% @projects.each do |project| %>
           <div class="col-xs-12 col-sm-4">
-            <div class="card">
-              <%= render "projects/card", project: project %>
-            </div>
+            <%= link_to project_path(project) do %>
+              <div class="card">
+                <%= render "projects/card", project: project %>
+              </div>
+            <% end %>
           </div>
         <% end %>
       <% else %>
         <h2 class="text-center"><%= "You have no projects at the moment" %></h2>
       <% end %>
     </div>
+      <div class="text-center">
+        <%= link_to "Create a project", new_project_path, class: "btn btn-primary btn-lg" %>
+      </div>
       <hr>
       <br>
 
