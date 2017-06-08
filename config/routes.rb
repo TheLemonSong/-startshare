@@ -1,6 +1,6 @@
  Rails.application.routes.draw do
   root to: 'pages#home'
-  devise_for :users
+  devise_for :users, controllers: {registrations: "registrations"}
   get '/dashboard', to: 'pages#dashboard'
   resources :projects do
     resources :roles, only: [:new, :create, :edit, :update]
