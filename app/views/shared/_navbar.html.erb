@@ -38,12 +38,17 @@
             </li>
             <li>
               <%= link_to dashboard_path do %>
-                <i class="fa fa-home"></i>  Dashboard
+                <i class="fa fa-tasks"></i>  Dashboard
               <% end %>
             </li>
             <li>
               <%= link_to edit_user_registration_path(current_user) do %>
                 <i class="fa fa-cogs"></i> <%= t(".edit_user_registration_path", default: "Account Settings") %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to root_path do %>
+              <i class="fa fa-home"></i> Home
               <% end %>
             </li>
             <li>
