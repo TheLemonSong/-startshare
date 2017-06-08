@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   def index
-    @projects = Project.all
+    @projects = policy_scope(Project).order(created_at: :desc)
   end
 
   def show
@@ -10,6 +10,7 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
+    authorize @project
   end
 
   def create
@@ -43,5 +44,6 @@ class ProjectsController < ApplicationController
 
   def set_project
       @project = Project.find(params[:id])
+      authorize @project
   end
 end

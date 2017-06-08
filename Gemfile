@@ -19,6 +19,9 @@ gem 'simple_form'
 gem 'country_select'
 gem 'autoprefixer-rails'
 
+# Authorisation
+gem "pundit"
+
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
