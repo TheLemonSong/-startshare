@@ -7,7 +7,7 @@
   end
 
   resources :roles, only: [] do
-      resources :applications, only: [:create]
+    resources :applications, only: [:create]
   end
   resources :applications, only: [:show]
 

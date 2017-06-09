@@ -1,7 +1,7 @@
-class LoginsController < Devise::LoginsController
-  def require_login
-    unless current_user
-      redirect_to new_user_session_path
-    end
-  end
-end
+# class LoginsController < Devise::LoginsController
+#   def require_login
+#     unless current_user
+#       redirect_to new_user_session_path
+#     end
+#   end
+# end
