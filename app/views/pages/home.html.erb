@@ -6,13 +6,40 @@
       <p>Connect with potential collaborators!</p>
     </div>
 </div>
-
-<div class="container info-banner">
-  <div>
-
-
+<div class="home-wrapper">
+  <div class="container info-banner">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4">
+        <%= link_to dashboard_path do %>
+          <div class="home-info-card" style="background: #f2f3f4">
+            <i class="fa fa-lightbulb-o"></i>
+            <p>Find contributors to make your project come to life</p>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <%= link_to dashboard_path do %>
+          <div class="home-info-card" style="background: #f2f3f4">
+            <i class="fa fa-group"></i>
+            <p>Collaborate!</p>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <%= link_to projects_path do %>
+          <div class="home-info-card" style="background: #f2f3f4">
+            <i class="fa fa-search"></i>
+            <p>Discover projects to apply your skills</p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    </div>
   </div>
 </div>
+
+
+
 
 
 

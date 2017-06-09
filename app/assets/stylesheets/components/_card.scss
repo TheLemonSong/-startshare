@@ -12,6 +12,29 @@
   }
 }
 
+.home-info-card {
+  height: 175px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  background-size: cover !important;
+  color: white;
+  position: relative;
+  border-radius: 5px;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  &:hover {
+    opacity: 0.9;
+  }
+  i {
+    font-size: 50px;
+    color: #31363d;
+    margin-top: 30px;
+  }
+  p {
+    margin-top: 8px;
+  }
+}
+
+
 .application-card {
   height: 250px;
   width: 100%;
