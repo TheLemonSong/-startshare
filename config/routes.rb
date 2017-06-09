@@ -13,4 +13,6 @@
 
   resources :users, only: [:new, :edit, :update, :create, :show, :destroy]
 
+  mount Attachinary::Engine => "/attachinary"
+
 end

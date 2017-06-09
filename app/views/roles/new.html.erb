@@ -7,6 +7,7 @@
       <%= simple_form_for [@project, @role] do |f| %>
         <%= f.input :name %>
         <%= f.input :description %>
+        <%= f.input :icon, as: :attachinary %>
         <%= f.button :submit %>
       <% end %>
     </div>

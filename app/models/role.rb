@@ -1,4 +1,6 @@
 class Role < ApplicationRecord
+  has_attachment :icon
+
   belongs_to :project
   has_many :applications, dependent: :destroy
 

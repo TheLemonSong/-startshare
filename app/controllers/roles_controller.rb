@@ -8,6 +8,8 @@ class RolesController < ApplicationController
   def new
     @role = Role.new
     @project = Project.find(params[:project_id])
+    authorize @role
+
   end
 
   def create
@@ -20,6 +22,7 @@ class RolesController < ApplicationController
     else
       render :new
     end
+    authorize @role
   end
 
   def edit
@@ -40,7 +43,7 @@ class RolesController < ApplicationController
 private
 
   def role_params
-    params.require(:role).permit(:name, :description)
+    params.require(:role).permit(:name, :description, :icon)
   end
 
   def set_role

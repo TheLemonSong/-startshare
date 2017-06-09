@@ -1,4 +1,6 @@
 class Project < ApplicationRecord
+  has_attachment :photo
+
   belongs_to :user
   has_many :roles, dependent: :destroy
 

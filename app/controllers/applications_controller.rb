@@ -13,13 +13,14 @@ class ApplicationsController < ApplicationController
   end
 
   def create
-    @application = Application.new()
+    @application = Application.new(params[:cover_message])
     @application.user = current_user
     @application.role = @role
+    authorize @application
     if @application.save
-      redirect_to application_path(@application)
+      redirect_to dashboard_path
     else
-      render :new
+      render 'projects/show'
     end
   end
 

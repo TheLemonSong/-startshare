@@ -7,11 +7,9 @@
       <% if @projects.any? %>
         <% @projects.each do |project| %>
           <div class="col-xs-12 col-sm-4">
-            <%= link_to project_path(project) do %>
               <div class="card">
                 <%= render "projects/card", project: project %>
               </div>
-            <% end %>
           </div>
         <% end %>
       <% else %>
