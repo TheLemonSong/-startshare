@@ -48,17 +48,22 @@
   border-radius: 3px;
   position: relative;
   overflow: hidden;
+
+  .project-role-card-icon {
+    margin-right: 20px;
+  }
 }
 
 .project-role-card-content {
-  flex: 1 0 500px;
+  flex-grow: 1;
+
+  p {
+    margin-bottom: 0;
+  }
 }
 
 .project-role-card-button {
-  flex: 1 0 200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin-right: 35px;
 }
 
 .project-role-card-ribbon {
