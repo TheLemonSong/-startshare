@@ -51,9 +51,11 @@
 
         </div>
         <div class="project-role-card-button">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#application<%= role.id %>">
+          <% unless @project.user == current_user %>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#application<%= role.id %>">
              Apply
-         </button>
+            </button>
+          <% end %>
         </div>
         <% unless role.applications.any? %>
           <div class="project-role-card-ribbon">
