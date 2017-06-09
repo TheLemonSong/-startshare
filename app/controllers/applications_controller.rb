@@ -13,7 +13,8 @@ class ApplicationsController < ApplicationController
   end
 
   def create
-    @application = Application.new(params[:cover_message])
+    @application = Application.new(cover_message: params['application']["cover_message"])
+    # raise
     @application.user = current_user
     @application.role = @role
     authorize @application
