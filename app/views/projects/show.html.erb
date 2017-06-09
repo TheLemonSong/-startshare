@@ -1,48 +1,92 @@
+<% if @project.photo %>
+  <% photo = cl_image_path @project.photo.path %>
+<% else %>
+<% photo = image_path 'background.jpg' %>
+<% end %>
+
+<% if @project.user.profile_photo %>
+  <% profile = cl_image_path @project.user.profile_photo %>
+<% else %>
+  <% profile = image_path 'face_placeholder.png' %>
+<% end %>
+
+<div class="container-fluid banner-show-project" style="background: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= photo %>');" >
+  <div class="text-center">
+    <h1><%= @project.name %></h1>
+    <p><%= @project.summary %></p>
+    <% if @project.user == current_user %>
+      <%= link_to "Add Role", new_project_role_path(@project), class: "btn btn-primary btn-lg" %>
+    <% end %>
+  </div>
+  <div class="project-user-banner">
+    <div class="avatar" style="background-image: url('<%= profile %>');"></div>
+    <h3><%= @project.user.first_name %> <%= @project.user.last_name %></h3>
+
+  </div>
+  <% if @project.user == current_user %>
+    <%= link_to edit_project_path(@project), class: "edit-project" do %>
+      <i class="fa fa-wrench"></i>
+    <% end %>
+  <% end %>
+</div>
+
 <div class="container">
-  <div class="row">
-    <div class="col-xs-8 col-xs-offset-2">
-      <div class="banner-show" style="background: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_path 'background.jpg' %>'); height: 100px; background-size: cover; background-position: center center; margin-top: 7px; ">
-      </div>
-        <div class="info text-center" style="background: #f2f2f2";>
-
-        <%# if @user.photo == nil %>
-          <%#= image_tag "face_placeholder.png", class: "avatar-square" %>
-        <%# else %>
-          <%#= cl_image_tag @user.photo.path, class: "avatar-square" %>
-        <%# end %>
-
-        <h3><strong>Name:</strong> <%= @project.name %> </h3>
-        <h3><strong>Summary:</strong> <%= @project.summary %></h3>
-        <%= link_to "Add Role", new_project_role_path(@project), class: "btn btn-warning" %>
-    </div>
-    <hr>
-    <h2>Current roles available for this project:</h2>
+  <h2 class="text-center">Available roles</h2>
     <% if @project.roles.empty? %>
-      <%= "There are no roles available for this project" %>
+      <p class="text-center"><%= "There are no roles available for this project" %></p>
     <% else %>
       <% @project.roles.each do |role| %>
-        <h3><strong>Role:</strong> <%= role.name %></h3>
-        <h3><strong>Description:</strong> <%= role.description %></h3>
-        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" style="left: 20px">
+
+      <% if role.icon %>
+        <% icon = cl_image_path role.icon.path %>
+      <% else %>
+        <% icon = 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/1024px-Infobox_info_icon.svg.png' %>
+      <% end %>
+      <div class="project-role-card">
+        <div class="project-role-card-icon avatar-large" style="background-image: url('<%= icon %>');">
+        </div>
+        <div class="project-role-card-content">
+          <h3><%= role.name %></h3>
+          <p><%= role.description %></p>
+
+        </div>
+        <div class="project-role-card-button">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#application<%= role.id %>" style="left: 20px">
              Apply
          </button>
-        <%#= link_to "Apply", role_applications_path(role), method: :post, class: "btn btn-warning" %>
-      <% end %>
-    <%end%>
-  </div>
+        </div>
+        <% unless role.applications.any? %>
+          <div class="project-role-card-ribbon">
+            <span>NEW</span>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="modal fade" id="application<%= role.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+         <div class="modal-dialog" role="document">
+           <div class="modal-content">
+             <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+             </div>
+             <div class="modal-body">
+               <h2 class="modal-title">Apply to <%= role.name %></h2>
+               <%= simple_form_for [role, @application] do |f| %>
+                <%= f.input :cover_message %>
+                <%= f.submit :Apply %>
+               <% end %>
+
+               <%= link_to 'Back to dashboard', dashboard_path, class: "btn btn-success" %>
+             </div>
+           </div>
+         </div>
+       </div>
+
+
+  <% end %>
+  <% end %>
 </div>
+
+
+
 <!-- Modal -->
- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-   <div class="modal-dialog" role="document">
-     <div class="modal-content">
-       <div class="modal-header">
-         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-       </div>
-       <div class="modal-body">
-         <h2 class="modal-title" id="myModalLabel">Application has been sent!</h2>
-         <%= link_to 'Back to dashboard', dashboard_path, class: "btn btn-success" %>
-       </div>
-     </div>
-   </div>
- </div>
-</div>
+

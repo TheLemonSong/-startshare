@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @application = Application.new
   end
 
   def new
@@ -39,7 +40,7 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :summary, :details, :start_date, :end_date, :stage)
+    params.require(:project).permit(:name, :summary, :details, :start_date, :end_date, :stage, :photo)
   end
 
   def set_project

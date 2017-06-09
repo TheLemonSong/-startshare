@@ -9,6 +9,8 @@
         <%= simple_form_for(@role) do |f| %>
           <%= f.input :name %>
           <%= f.input :description %>
+          <%= f.input :icon, as: :attachinary %>
+
         <div class="button-flex">
           <%= f.submit "Update", class: "btn btn-primary" %>
         <% end %>
