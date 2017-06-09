@@ -1,5 +1,12 @@
+<% if @user.profile_photo %>
+  <% photo = cl_image_path @user.profile_photo.path %>
+<% else %>
+  <% photo = image_path 'face_placeholder.png' %>
+<% end %>
+
+
 <div class="container-fluid profile-banner">
-  <div class="user-img" style="background-image: url('<%= image_path "face_placeholder.png" %>');">
+  <div class="user-img" style="background-image: url('<%= photo %>');">
 
   </div>
   <div class="user-info">

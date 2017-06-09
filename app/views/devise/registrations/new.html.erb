@@ -21,6 +21,7 @@
             <%= f.input :email %>
             <%= f.input :password, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
             <%= f.input :password_confirmation %>
+            <%= f.input :profile_photo, as: :attachinary %>
 
 
           <div class="form-actions">
