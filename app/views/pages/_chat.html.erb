@@ -1,0 +1,28 @@
+<% app_conversation = Conversation.between(application.user.id, application.role.project.user.id).where(application: application).first %>
+<% if app_conversation %>
+
+  <div class="chat-container">
+    <div class="messages-container">
+      <% app_conversation.messages.each do |msg| %>
+      <div class="message">
+
+      <% if msg.user == current_user %>
+        <p class="text-right"><%= msg.body %> [<%= msg.user.first_name %>]</p>
+      <% else %>
+      <p class="text-left">[<%= msg.user.first_name %>] <%= msg.body %></p>
+      <% end %>
+
+      </div>
+      <% end %>
+    </div>
+    <div class="message-input">
+      <%= simple_form_for [application.conversation, application.conversation.messages.new] do |f| %>
+        <div class="form-inline">
+          <%= f.input :body, label: false %>
+          <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
+          <%= f.submit "Send", class: "btn btn-default" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
