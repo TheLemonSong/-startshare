@@ -5,6 +5,8 @@ class Application < ApplicationRecord
   has_one :conversation
   # validates :status, presence: true
 
+  has_many :skils
+
 
 
   validates :user, presence: :true
