@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :applications, through: :roles, dependent: :destroy # This deletes the users applications when user is deleted.
   has_many :roles, through: :projects
   has_many :applications
+  has_many :conversations, class_name: 'Conversation', foreign_key: 'sender_id'
+  has_many :conversations, class_name: 'Conversation', foreign_key: 'recipient_id'
 
   validates :email, presence: true, uniqueness: :true
   validates :first_name, presence: true

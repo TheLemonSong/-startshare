@@ -6,5 +6,10 @@ class PagesController < ApplicationController
 
   def dashboard
     @projects = Project.where(user_id: current_user)
+    @applications = current_user.applications
+  end
+
+  def message
+
   end
 end
