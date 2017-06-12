@@ -3,7 +3,7 @@
   devise_for :users, controllers: {registrations: "registrations"}
   get '/dashboard', to: 'pages#dashboard'
   resources :projects do
-    resources :roles, only: [:new, :create, :edit, :update]
+    resources :roles, only: [:new, :create, :edit, :update, :destroy]
   end
 
   resources :roles, only: [] do
