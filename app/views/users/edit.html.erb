@@ -10,6 +10,7 @@
             <%= f.input :first_name %>
             <%= f.input :last_name %>
             <%= f.input :education %>
+            <%= f.association :skills, as: :check_boxes, :include_blank => false, :label_method => lambda { |skill| "#{skill.skill}" } %>
             <%= f.input :city %>
             <%= f.input :zip %>
             <%= f.input :country %>

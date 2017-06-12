@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :applications, through: :roles, dependent: :destroy # This deletes the users applications when user is deleted.
   has_many :roles, through: :projects
   has_many :applications
+  has_many :user_skills
+  has_many :skills, through: :user_skills
 
   validates :email, presence: true, uniqueness: :true
   validates :first_name, presence: true
