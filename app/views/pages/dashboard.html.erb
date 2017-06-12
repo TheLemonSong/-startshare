@@ -90,7 +90,7 @@
       <% if current_user.applications.empty? %>
         <h2>You have made no applications</h2>
       <% else %>
-        <% current_user.applications.each do |application| %>
+        <% @applications.each do |application| %>
           <!-- card -->
           <div class="application-card">
           <!-- top layer -->
@@ -105,6 +105,10 @@
                   <h6>PROJECT :</h6>
                   <h3><%= application.role.project.name %></h3>
                 </div>
+                <div class="flex-column">
+                  <h6>DESCRIPTION :</h6>
+                  <h3><%= application.role.description %></h3>
+                </div>
               </div>
               <!-- middle -->
               <div class="application-card-top-middle flex-center">
@@ -114,32 +118,14 @@
               </div>
               <!-- right -->
               <div class="application-card-top-right">
-                <h6>MESSAGE :</h6>
-                <p><%= application.cover_message %></p>
+                <%= render "pages/chat", application: application %>
               </div>
-            </div>
-            <!-- bottom layer -->
-            <div class="application-card-bottom">
-              <h6>DESCRIPTION :</h6>
-              <p><%= application.role.description %></p>
             </div>
           </div>
         <% end %>
       <% end %>
     </div>
-<!--     <div class="row">
-      <%# if current_user.roles.empty? %>
-        <h2 class="text-center"><%# "You have no applications pending" %></h2>
-        <%# else %>
-          <%# current_user.roles.each do |role| %>
-            <div class="col-xs-12 col-sm-4">
-              <div class="card">
-                <%# render "roles/card", role: role %>
-              </div>
-            </div>
-          <%# end %>
-      <%# end %>
-    </div> -->
+
       <hr>
       <br>
   </div>

@@ -13,12 +13,15 @@ class ApplicationsController < ApplicationController
   end
 
   def create
-    @application = Application.new(cover_message: params['application']["cover_message"])
+    @application = Application.new
     # raise
     @application.user = current_user
     @application.role = @role
     authorize @application
+
     if @application.save
+      conversation = Conversation.create(sender: @application.user, recipient: @application.role.project.user, application: @application)
+      Message.create(conversation: conversation, body: params['cover_message'], user: @application.user)
       redirect_to dashboard_path
     else
       render 'projects/show'

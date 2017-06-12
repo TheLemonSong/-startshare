@@ -10,18 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170609104749) do
+
+ActiveRecord::Schema.define(version: 20170612120535) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "applications", force: :cascade do |t|
-    t.string   "status",        default: "pending"
+    t.string   "status",     default: "pending"
     t.integer  "role_id"
     t.integer  "user_id"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
-    t.text     "cover_message"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.index ["role_id"], name: "index_applications_on_role_id", using: :btree
     t.index ["user_id"], name: "index_applications_on_user_id", using: :btree
   end
@@ -41,6 +42,26 @@ ActiveRecord::Schema.define(version: 20170609104749) do
     t.index ["attachinariable_type", "attachinariable_id", "scope"], name: "by_scoped_parent", using: :btree
   end
 
+  create_table "conversations", force: :cascade do |t|
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.integer  "application_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["application_id"], name: "index_conversations_on_application_id", using: :btree
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text     "body"
+    t.integer  "conversation_id"
+    t.integer  "user_id"
+    t.boolean  "read",            default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
+    t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string   "name"
     t.string   "summary"
@@ -54,6 +75,15 @@ ActiveRecord::Schema.define(version: 20170609104749) do
     t.index ["user_id"], name: "index_projects_on_user_id", using: :btree
   end
 
+  create_table "role_skills", force: :cascade do |t|
+    t.integer  "skill_id"
+    t.integer  "role_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["role_id"], name: "index_role_skills_on_role_id", using: :btree
+    t.index ["skill_id"], name: "index_role_skills_on_skill_id", using: :btree
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
@@ -61,6 +91,21 @@ ActiveRecord::Schema.define(version: 20170609104749) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["project_id"], name: "index_roles_on_project_id", using: :btree
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "skill"
+  end
+
+  create_table "user_skills", force: :cascade do |t|
+    t.integer  "skill_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["skill_id"], name: "index_user_skills_on_skill_id", using: :btree
+    t.index ["user_id"], name: "index_user_skills_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -91,5 +136,9 @@ ActiveRecord::Schema.define(version: 20170609104749) do
   add_foreign_key "applications", "roles"
   add_foreign_key "applications", "users"
   add_foreign_key "projects", "users"
+  add_foreign_key "role_skills", "roles"
+  add_foreign_key "role_skills", "skills"
   add_foreign_key "roles", "projects"
+  add_foreign_key "user_skills", "skills"
+  add_foreign_key "user_skills", "users"
 end
