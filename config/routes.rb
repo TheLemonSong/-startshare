@@ -15,7 +15,7 @@
   get '/messages', to: 'pages#messages'
 
   resources :projects do
-    resources :roles, only: [:new, :create, :edit, :update]
+    resources :roles, only: [:new, :create, :edit, :update, :destroy]
   end
 
   resources :roles, only: [] do

@@ -7,8 +7,8 @@ class RolesController < ApplicationController
 
   def new
     @role = Role.new
-    @project = Project.find(params[:project_id])
     authorize @role
+    @project = Project.find(params[:project_id])
 
   end
 
@@ -16,38 +16,53 @@ class RolesController < ApplicationController
     @role = Role.new(role_params)
     @project = Project.find(params[:project_id])
     @role.project = @project
+    authorize @role
+
     # @role.user = current_user
     if @role.save
       redirect_to project_path(@project)
     else
       render :new
     end
-    authorize @role
   end
 
   def edit
 
+    @project = Project.find(params[:project_id])
   end
 
   def update
-    @role.update(role_params)
-    redirect_to role_path(@role)
+    @project = Project.find(params[:project_id])
+    skills = params[:role][:skill_ids].reject { |c| c.blank? }
+    current_user.skills.destroy_all
+    skills.each do |id|
+      s = Skill.find(id.to_i)
+      RoleSkill.create(role: current_user, skill: s)
+    end
+
+    if @role.update(role_params)
+      # raise
+      redirect_to project_path(@project)
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @project = Project.find(params[:project_id])
     @role.destroy
-    redirect_to root_path
+    redirect_to project_path(@project)
   end
 
-
-private
+  private
 
   def role_params
-    params.require(:role).permit(:name, :description, :icon)
+    params.require(:role).permit(:name, :description, :icon, :skills)
   end
 
   def set_role
-      @role = Role.find(params[:id])
+    @role = Role.find(params[:id])
+    authorize @role
   end
 
 end
