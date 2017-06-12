@@ -4,7 +4,7 @@ class Application < ApplicationRecord
 
   has_one :conversation
   # validates :status, presence: true
-
+  has_many :skills
 
 
   validates :user, presence: :true

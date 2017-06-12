@@ -37,7 +37,7 @@ class RolesController < ApplicationController
     current_user.skills.destroy_all
     skills.each do |id|
       s = Skill.find(id.to_i)
-      RoleSkill.create(role: current_user, skill: s)
+      RoleSkill.create(role: @role, skill: s)
     end
 
     if @role.update(role_params)

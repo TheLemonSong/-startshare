@@ -6,6 +6,8 @@ class Role < ApplicationRecord
 
   has_many :conversations, dependent: :destroy
 
+  has_many :role_skills
+  has_many :skills, through: :role_skills
 
   validates :name, presence: true
   validates :description, presence: true
