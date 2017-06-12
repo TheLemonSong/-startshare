@@ -25,13 +25,62 @@
       <br>
 
       <br>
-    <h1 class="text-center">Roles applied for</h1>
+        <h1 class="text-center">Project Applicants</h1>
       <br>
 
-    <!-- APPLICATIONS -->
+    <!-- APPLICATIONS TO MY PROJECTS -->
+    <div class="row">
+      <% if @user_applications.empty? %>
+        <h2>You have made no applications</h2>
+      <% else %>
+        <% @user_applications.each do |application| %>
+          <!-- card -->
+          <div class="application-card">
+          <!-- top layer -->
+            <div class="application-card-top flex">
+              <!-- left -->
+              <div class="application-card-top-left">
+                <div class="flex-column" style="margin-bottom: 20px;">
+                  <h6>APPLICANT :</h6>
+                  <%= link_to user_path(application.user) do %>
+                    <h3> <%= application.user.first_name + " " + application.user.last_name %> </h3>
+                  <% end %>
+                </div>
+                <div class="flex-column" style="margin-bottom: 20px;">
+                  <h6>ROLE :</h6>
+                  <h3><%= application.role.name %></h3>
+                </div>
+                <div class="flex-column">
+                  <h6>PROJECT :</h6>
+                  <%= link_to project_path(application.role.project) do %>
+                  <h3><%= application.role.project.name %></h3>
+                  <% end %>
+                </div>
+              </div>
+              <!-- middle -->
+              <div class="application-card-top-middle flex-center">
+                <div class="status-card">
+                  <%= application.status.capitalize %>
+                </div>
+              </div>
+              <!-- right -->
+              <div class="application-card-top-right">
+                <%= render "pages/chat", application: application %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+      <br>
+    <h1 class="text-center">My Role Applications</h1>
+      <br>
+
+    <!-- MY APPLICATIONS -->
     <div class="row">
       <% if current_user.applications.empty? %>
-        <h2>You have no applications</h2>
+        <h2>You have made no applications</h2>
       <% else %>
         <% @applications.each do |application| %>
           <!-- card -->
