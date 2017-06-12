@@ -35,6 +35,8 @@
     <% if @project.roles.empty? %>
       <p class="text-center"><%= "There are no roles available for this project" %></p>
     <% else %>
+
+
       <% @project.roles.each do |role| %>
 
       <% if role.icon %>
@@ -48,10 +50,11 @@
         <div class="project-role-card-content">
           <h3><%= role.name %></h3>
           <p><%= role.description %></p>
-
         </div>
         <div class="project-role-card-button">
-          <% unless @project.user == current_user %>
+          <% if @project.user == current_user %>
+            <%= link_to "Edit", edit_project_role_path(@project, role), class: 'btn btn-primary' %>
+          <% else %>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#application<%= role.id %>">
              Apply
             </button>
