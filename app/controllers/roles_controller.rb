@@ -16,9 +16,14 @@ class RolesController < ApplicationController
     @role = Role.new(role_params)
     @project = Project.find(params[:project_id])
     @role.project = @project
+
+    skills = params[:role][:skill_ids].reject { |c| c.blank? }
+    skills.each do |id|
+      s = Skill.find(id.to_i)
+      RoleSkill.create(role: @role, skill: s)
+    end
     authorize @role
 
-    # @role.user = current_user
     if @role.save
       redirect_to project_path(@project)
     else
@@ -33,11 +38,12 @@ class RolesController < ApplicationController
 
   def update
     @project = Project.find(params[:project_id])
+
     skills = params[:role][:skill_ids].reject { |c| c.blank? }
-    current_user.skills.destroy_all
+    @role.skills.destroy_all
     skills.each do |id|
       s = Skill.find(id.to_i)
-      RoleSkill.create(role: current_user, skill: s)
+      RoleSkill.create(role: @role, skill: s)
     end
 
     if @role.update(role_params)
