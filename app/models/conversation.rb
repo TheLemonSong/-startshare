@@ -2,6 +2,7 @@ class Conversation < ActiveRecord::Base
   belongs_to :sender, foreign_key: :sender_id, class_name: 'User'
   belongs_to :recipient, foreign_key: :recipient_id, class_name: 'User'
   belongs_to :application
+
   has_many :messages, dependent: :destroy
 
   scope :between, -> (sender_id,recipient_id) do
