@@ -45,20 +45,16 @@
                   <%= link_to user_path(application.user) do %>
                     <h3> <%= application.user.first_name + " " + application.user.last_name %> </h3>
                   <% end %>
+                </div>
+                <div class="flex-column" style="margin-bottom: 20px;">
                   <h6>ROLE :</h6>
                   <h3><%= application.role.name %></h3>
                 </div>
-
                 <div class="flex-column">
                   <h6>PROJECT :</h6>
-
-
-                  <%= link_to projects_path(application.role.project_id) do %>
+                  <%= link_to project_path(application.role.project) do %>
                   <h3><%= application.role.project.name %></h3>
                   <% end %>
-
-
-
                 </div>
               </div>
               <!-- middle -->
@@ -69,12 +65,8 @@
               </div>
               <!-- right -->
               <div class="application-card-top-right">
-                <h6>MESSAGE :</h6>
-                <p><%= application.cover_message %></p>
+                <%= render "pages/chat", application: application %>
               </div>
-            </div>
-            <!-- bottom layer -->
-            <div class="application-card-bottom">
             </div>
           </div>
         <% end %>
