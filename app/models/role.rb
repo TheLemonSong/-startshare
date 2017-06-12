@@ -3,6 +3,8 @@ class Role < ApplicationRecord
 
   belongs_to :project
   has_many :applications, dependent: :destroy
+  has_many :role_skills
+  has_many :skills, through: :role_skills
 
   validates :name, presence: true
   validates :description, presence: true
