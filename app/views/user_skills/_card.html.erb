@@ -1,19 +1,23 @@
 <div class="skill-card flex">
   <div class="skill-card-left flex-column">
-    <h1><%= skill.skill %></h1>
+    <% if policy(@user).update? %>
+      <h1><%= skill.skill %>
+        <% user_skill = skill.user_skills.where(user: current_user).first %>
+        <%= link_to '(Edit)', edit_user_skill_path(user_skill) %>
+      </h1>
+    <% else %>
+      <h1><%= skill.skill %></h1>
+    <% end %>
     <h4>Years  <%= skill.user_skills.where(user_id: current_user.id).first.years.to_i %></h4>
     <h6>DESCRIPTION</h6>
     <p><%= skill.user_skills.where(user_id: current_user.id)[0].description %></p>
   </div>
 
+  <%= cl_image_tag skill.photo, width: 60, class: 'skill-photo' %>
+
   <!-- EDIT -->
   <div class="flex-end">
-    <% if policy(@user).update? %>
-      <% user_skill = skill.user_skills.where(user: current_user).first %>
-      <%= link_to edit_user_skill_path(user_skill) do %>
-        <i class="fa fa-wrench"></i>
-      <% end %>
-    <% end %>
+
   </div>
 
 </div>
