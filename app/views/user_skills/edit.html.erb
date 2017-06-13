@@ -9,9 +9,12 @@
           <%= simple_form_for(@user_skill) do |f| %>
             <%= f.input :years, collection: (1..30).to_a %>
             <%= f.input :description, :as => :text %>
-            <%= f.submit "Edit", class: "btn btn-primary" %>
-          <% end %>
-        </div>
+            <div class="text-left">
+              <%= f.submit "Edit", class: "btn btn-primary" %>
+            <% end %>
+              <%= button_to "Delete", user_skill_path(@user_skill), method: :delete, class: "btn btn-warning"%>
+            </div>
+          </div>
       </div>
     </div>
   </div>
