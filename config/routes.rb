@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get 'conversations/create'
 
+  get 'search', to: 'pages#search'
+
   root to: 'pages#home'
   devise_for :users, controllers: {registrations: "registrations"}
   get '/dashboard', to: 'pages#dashboard'

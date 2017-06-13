@@ -35,4 +35,11 @@ class PagesController < ApplicationController
   def message
 
   end
+
+  def search
+    PgSearch::Multisearch.rebuild(User)
+    PgSearch::Multisearch.rebuild(Role)
+    PgSearch::Multisearch.rebuild(Project)
+    @results = PgSearch.multisearch(params[:search])
+  end
 end

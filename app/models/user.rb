@@ -1,8 +1,10 @@
 class User < ApplicationRecord
+  include PgSearch
+  multisearchable against: [:skill_description, :first_name, :last_name, :city, :country]
+
+  has_attachment :profile_photo
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  has_attachment :profile_photo
-
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :projects, dependent: :destroy # This deletes the users projects when user is deleted.
@@ -23,6 +25,10 @@ class User < ApplicationRecord
   validates :city, presence: true
   validates :zip, presence: :true
   validates :country, presence: :true
+
+  def name
+    return '#{self.first_name} #{self.last_name}'
+  end
 end
 
 

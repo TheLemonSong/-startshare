@@ -1,0 +1,12 @@
+<div class="search-card">
+  <div class="search-card-img" style="background-image: url('<%= photo %>')">
+
+  </div>
+  <div class="search-card-content">
+    <h6><%= result.class.name.capitalize %></h6>
+    <h3><%= result.name %></h3>
+  </div>
+  <div class="search-card-control">
+    <%= link_to action, project_path(result), class: 'btn btn-primary'  %>
+  </div>
+</div>

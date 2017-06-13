@@ -76,12 +76,12 @@
     <% end %>
 
     <!-- Search form -->
-    <form action="" class="navbar-wagon-search">
-      <input type="text" class="navbar-wagon-search-input" placeholder="Search">
-      <button type="submit" class="navbar-wagon-search-btn">
+    <%= form_tag search_path, method: "get", :class => 'navbar-wagon-search' do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search", class: "navbar-wagon-search-input" %>
+      <button class='navbar-wagon-search-btn'>
         <i class="fa fa-search"></i>
       </button>
-    </form>
+    <% end %>
   </div>
 
   <!-- Dropdown list appearing on mobile only -->
