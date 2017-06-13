@@ -26,9 +26,6 @@ class User < ApplicationRecord
   validates :zip, presence: :true
   validates :country, presence: :true
 
-  def name
-    return '#{self.first_name} #{self.last_name}'
-  end
 end
 
 
