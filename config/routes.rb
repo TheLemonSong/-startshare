@@ -29,6 +29,8 @@ Rails.application.routes.draw do
     resources :messages, only: [:create]
   end
 
+  resources :user_skills, only: [:edit, :update]
+
   mount Attachinary::Engine => "/attachinary"
 
 end
