@@ -29,6 +29,10 @@
     resources :messages, only: [:create]
   end
 
+  get 'applications/:id/accept' => 'applications#accept_application', as: :accept_application
+  get 'applications/:id/decline' => 'applications#decline_application', as: :decline_application
+
+
   mount Attachinary::Engine => "/attachinary"
 
 end

@@ -54,6 +54,7 @@ class RolesController < ApplicationController
     redirect_to project_path(@project)
   end
 
+
   private
 
   def role_params

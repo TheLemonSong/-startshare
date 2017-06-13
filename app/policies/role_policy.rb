@@ -9,6 +9,14 @@ class RolePolicy < ApplicationPolicy
     return true # Anyone can view a project
   end
 
+  def accept_role?
+    return true # Anyone can view a project
+  end
+
+  def decline_role?
+    return true # Anyone can view a project
+  end
+
   def create?
     record.project.user == user # Anyone can create a project
   end
