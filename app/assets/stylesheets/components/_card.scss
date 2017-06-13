@@ -12,6 +12,25 @@
   }
 }
 
+.skill-card {
+  width: 80%;
+  height: 200px;
+  max-width: 1240px;
+  border: 1px;
+  color: #2b2d30;
+  background-color: #f7f8f9;
+  margin: 0 auto;
+  border-style: solid;
+  border-color: #34393f;
+  margin-bottom: 20px;
+  h3 {
+    color: #2b2d30;
+  p {
+    color: black;
+  }
+  }
+}
+
 .home-info-card {
   height: 175px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);

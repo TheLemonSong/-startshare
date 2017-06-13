@@ -21,14 +21,16 @@
   <% end %>
 </div>
 <div class="container">
-<div class="text-center"><h2><strong>Skills</strong></h2></div>
-
-  <div class="row">
-    <ul>
-      <% @skills.each do |skill| %>
-      <li><%= skill.skill %></li>
-      <% end %>
-    </ul>
-  </div>
+  <br>
+  <div class="text-center"><h2><strong>Skills & Experience</strong></h2></div>
+  <hr>
+      <div class="row">
+        <% @skills.each do |skill| %>
+          <div class="col-xs-12">
+            <%= render "skills/card", skill: skill %>
+          </div>
+        <% end %>
+      </div>
+    </div>
 </div>
 
