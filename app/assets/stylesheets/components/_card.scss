@@ -13,21 +13,32 @@
 }
 
 .skill-card {
-  width: 80%;
-  height: 200px;
-  max-width: 1240px;
-  border: 1px;
+  border: 1px solid #34393f;
   color: #2b2d30;
+  padding: 15px 20px;
   background-color: #f7f8f9;
   margin: 0 auto;
-  border-style: solid;
-  border-color: #34393f;
   margin-bottom: 20px;
-  h3 {
-    color: #2b2d30;
-  p {
+  h1 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  h4 {
+    color: #626468;
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+  h6 {
+    color: lightgrey;
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+  i {
+    font-size: 15px;
     color: black;
   }
+  .skill-card-left {
+    flex: 0 0 95%;
   }
 }
 

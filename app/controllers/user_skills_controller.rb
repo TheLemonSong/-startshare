@@ -18,13 +18,9 @@ class UserSkillsController < ApplicationController
   # end
   def update
       @user_skill = UserSkill.find(params[:id])
-      @user_skill.user = current_user
+      @user_skill.update(user_skill_params)
       authorize @user_skill
-      if @user_skill.save
-        redirect_to user_path(current_user)
-      else
-        render :new
-      end
+      redirect_to user_path(current_user)
   end
 
 
@@ -53,6 +49,6 @@ class UserSkillsController < ApplicationController
   end
 
   def user_skill_params
-    params.require(:user_skill).permit(:description, :skill_id)
+    params.require(:user_skill).permit(:years, :description, :skill_id)
   end
 end

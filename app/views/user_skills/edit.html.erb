@@ -7,6 +7,7 @@
           <h1 class="text-center"><strong><em>Edit <%= @user_skill.skill.skill %> Skills</em></strong></h1>
           <hr>
           <%= simple_form_for(@user_skill) do |f| %>
+            <%= f.input :years, collection: (1..30).to_a %>
             <%= f.input :description, :as => :text %>
             <%= f.submit "Edit", class: "btn btn-primary" %>
           <% end %>

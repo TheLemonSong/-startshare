@@ -8,6 +8,7 @@
           <hr>
           <%= simple_form_for(@user_skill) do |f| %>
             <%= f.association :skill, include_blank: false, include_hidden: false, label_method: lambda { |skill| "#{skill.skill}" } %>
+            <%= f.input :years, collection: (1..30).to_a %>
           <div class="button">
             <%= f.input :description, :as => :text %>
             <%= f.submit "Create", class: "btn btn-primary" %>
