@@ -21,13 +21,6 @@ end
 
 
 def update
-  skills = params[:user][:skill_ids].reject { |c| c.blank? }
-  current_user.skills.destroy_all
-  skills.each do |id|
-    s = Skill.find(id.to_i)
-    UserSkill.create(user: current_user, skill: s)
-  end
-
   if @user.update(user_params)
     # raise
     redirect_to user_path(@user)
