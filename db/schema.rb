@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170613132452) do
+stylestuff7
+ActiveRecord::Schema.define(version: 20170613173302) do
+master
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,6 +106,7 @@ ActiveRecord::Schema.define(version: 20170613132452) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "skill"
+    t.string   "photo"
   end
 
   create_table "user_skills", force: :cascade do |t|
