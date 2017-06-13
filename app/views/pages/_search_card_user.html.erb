@@ -4,7 +4,7 @@
   </div>
   <div class="search-card-content">
     <h6><%= result.class.name.capitalize %></h6>
-    <h3><%= result.name %></h3>
+    <h3><%= result.first_name %> <%= result.last_name %></h3>
   </div>
   <div class="search-card-control">
     <%= link_to action, user_path(result), class: 'btn btn-primary'  %>
