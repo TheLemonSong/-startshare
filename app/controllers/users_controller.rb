@@ -19,6 +19,7 @@ def edit
 
 end
 
+
 def update
   skills = params[:user][:skill_ids].reject { |c| c.blank? }
   current_user.skills.destroy_all

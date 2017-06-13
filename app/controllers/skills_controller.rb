@@ -1,5 +1,5 @@
 class SkillsController < ApplicationController
-  before_action :set_skill, only: [:show, :edit, :update, :destroy]
+  before_action :set_skill, only: [:show, :edit, :update, :destroy, :create, :new]
 
   def show
   end
@@ -19,6 +19,7 @@ class SkillsController < ApplicationController
 
   def new
     @skill = Skill.new
+    authorize @skill
   end
 
   def update
@@ -30,6 +31,7 @@ class SkillsController < ApplicationController
   end
 
   def edit
+    authorize @skill
   end
 
 
@@ -37,6 +39,7 @@ private
 
   def set_skill
       @skill = Skill.find(params[:id])
+      authorize @skill
   end
 
   def role_params

@@ -1,0 +1,17 @@
+<div class="edit-wrapper" style="background: #f2f2f2">
+  <div class="content-wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+          <br>
+          <h1 class="text-center"><strong><em>Edit <%= @user_skill.skill.skill %> Skills</em></strong></h1>
+          <hr>
+          <%= simple_form_for(@user_skill) do |f| %>
+            <%= f.input :description, :as => :text %>
+            <%= f.submit "Edit", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

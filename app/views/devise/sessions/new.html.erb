@@ -1,11 +1,13 @@
 <div class="content-wrapper">
   <div class="container">
     <div class="row">
-      <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3" style="margin-top: 100px;">
+        <div class="text-center">
         <h2>Log in</h2>
+        </div>
 
         <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <div class="form-inputs">
+          <div class="form-inputs" style="margin-top: 15px;">
             <%= f.input :email, required: true, autofocus: true %>
             <%= f.input :password, required: false %>
 
@@ -21,7 +23,7 @@
   </div>
 </div>
 
-<div class="text-center">
+<div class="text-center" style="margin-top: -75px;">
 <%= render "devise/shared/links" %>
 </div>
 
