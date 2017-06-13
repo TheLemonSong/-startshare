@@ -29,6 +29,9 @@ Rails.application.routes.draw do
     resources :messages, only: [:create]
   end
 
+  get 'applications/:id/accept' => 'applications#accept_application', as: :accept_application
+  get 'applications/:id/decline' => 'applications#decline_application', as: :decline_application
+
   resources :user_skills, only: [:edit, :update, :new, :create, :destroy]
 
   mount Attachinary::Engine => "/attachinary"
