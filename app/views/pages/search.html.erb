@@ -1,0 +1,37 @@
+<div class="container">
+  <h1 class="text-center">Search results...</h1>
+      <% @results.each do |result| %>
+        <% if result.searchable_type == 'Project' %>
+          <% project = Project.find(result.searchable_id) %>
+          <% if project.photo %>
+            <% photo = cl_image_path project.photo.path %>
+          <% else %>
+            <% photo = image_path 'background.jpg' %>
+          <% end %>
+          <%= render "pages/search_card_project", photo: photo, result: project, action: "View" %>
+        <% end %>
+        <% if result.searchable_type == 'Role' %>
+          <% role = Role.find(result.searchable_id) %>
+          <% if role.icon %>
+            <% photo = cl_image_path role.icon.path %>
+          <% else %>
+            <% photo = image_path 'background.jpg' %>
+          <% end %>
+          <%= render "pages/search_card_role", photo: photo, result: role, action: "View details" %>
+        <% end %>
+        <% if result.searchable_type == 'User' %>
+          <% user = User.find(result.searchable_id) %>
+          <% if user.profile_photo %>
+            <% photo = cl_image_path user.profile_photo.path %>
+          <% else %>
+            <% photo = image_path 'background.jpg' %>
+          <% end %>
+          <%= render "pages/search_card_user", photo: photo, result: user, action: "Profile" %>
+        <% end %>
+      <% end %>
+</div>
+
+
+
+
+

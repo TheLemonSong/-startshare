@@ -27,6 +27,9 @@ gem 'attachinary', github: 'assembler/attachinary'
 gem 'jquery-fileupload-rails'
 gem 'coffee-rails'
 
+# Search
+gem 'pg_search'
+
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
