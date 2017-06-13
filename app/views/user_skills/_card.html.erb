@@ -1,6 +1,6 @@
 <div class="skill-card">
   <div class="text-left">
-    <h3><%= skill.skill %></h3>
-      <p><%= @user.skill_description %></p>
-    </div>
+    <h1><%= skill.skill %></h1>
+    <h3><%= skill.user_skills.where(user_id: current_user.id).first.description %></h3>
+  </div>
 </div>

@@ -22,12 +22,17 @@
 </div>
 <div class="container">
   <br>
-  <div class="text-center"><h2><strong>Skills & Experience</strong></h2></div>
-  <hr>
+  <div style="display: flex-center;">
+    <h2 class="text-center"><strong>Skills & Experience</strong></h2>
+    <%= link_to new_user_skill_path do %>
+      <i class="fa fa-plus-circle" style="font-size: 40px; margin-left: 110px; margin-bottom: 15px;"></i>
+    <% end %>
+    <hr>
+  </div>
       <div class="row">
         <% @skills.each do |skill| %>
           <div class="col-xs-12">
-            <%= render "skills/card", skill: skill %>
+            <%= render "user_skills/card", skill: skill %>
           </div>
         <% end %>
       </div>

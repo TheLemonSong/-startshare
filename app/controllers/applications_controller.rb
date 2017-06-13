@@ -1,6 +1,6 @@
 class ApplicationsController < ApplicationController
 
-  before_action :set_application, only: [:show]
+  before_action :set_application, only: [:show, :accept_application, :decline_application]
   before_action :set_role, only: [:create]
 
 
@@ -26,6 +26,23 @@ class ApplicationsController < ApplicationController
     else
       render 'projects/show'
     end
+  end
+
+  def accept_application
+
+    @application.status = "accepted"
+        authorize @application
+
+    @application.save
+    redirect_to dashboard_path
+  end
+
+  def decline_application
+    @application.status = "declined"
+        authorize @application
+
+    @application.save
+    redirect_to dashboard_path
   end
 
   private

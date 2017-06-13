@@ -1,5 +1,5 @@
 class SkillsController < ApplicationController
-  before_action :set_skill, only: [:show, :edit, :update, :destroy, :create]
+  before_action :set_skill, only: [:show, :edit, :update, :destroy, :create, :new]
 
   def show
   end
