@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get 'conversations/create'
 
+  get 'search', to: 'pages#search'
+
   root to: 'pages#home'
   devise_for :users, controllers: {registrations: "registrations"}
   get '/dashboard', to: 'pages#dashboard'
@@ -28,6 +30,9 @@ Rails.application.routes.draw do
   resources :conversations do
     resources :messages, only: [:create]
   end
+
+  get 'applications/:id/accept' => 'applications#accept_application', as: :accept_application
+  get 'applications/:id/decline' => 'applications#decline_application', as: :decline_application
 
   resources :user_skills, only: [:edit, :update, :new, :create, :destroy]
 

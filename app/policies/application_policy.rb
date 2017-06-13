@@ -18,6 +18,14 @@ class ApplicationPolicy
     true
   end
 
+  def accept_application?
+    true
+  end
+
+  def decline_application?
+    true
+  end
+
   def new?
     create?
   end

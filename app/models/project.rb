@@ -1,4 +1,7 @@
 class Project < ApplicationRecord
+  include PgSearch
+  multisearchable against: [:name, :summary]
+
   has_attachment :photo
 
   belongs_to :user

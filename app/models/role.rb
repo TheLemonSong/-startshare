@@ -1,4 +1,7 @@
 class Role < ApplicationRecord
+  include PgSearch
+  multisearchable against: [:name, :description]
+
   has_attachment :icon
 
   belongs_to :project
