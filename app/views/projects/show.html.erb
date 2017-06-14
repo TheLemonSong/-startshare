@@ -1,3 +1,9 @@
+
+<!-- The links below are for OpenGraph and Twitter to be able to pull the relevent info when sharing on their sites. -->
+<% content_for :meta_title, @project.name %>
+<% content_for :meta_description, @project.summary %>
+<% content_for :meta_image, cloudinary_url(@project.photo.path) %>
+
   <% if @project.photo %>
   <% photo = cl_image_path @project.photo.path %>
 <% else %>
