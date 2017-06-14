@@ -19,7 +19,8 @@
     <%= render 'shared/flashes' %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
-    <%= cloudinary_js_config %>
+    <%= yield(:after_js) %>
 
+    <%= cloudinary_js_config %>
   </body>
 </html>

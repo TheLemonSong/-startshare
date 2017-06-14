@@ -31,6 +31,9 @@ end
 
 def show
   @skills = current_user.skills
+
+  @user_coordinates = { lat: @user.latitude, lng: @user.longitude }
+
 end
 
 def destroy
@@ -41,13 +44,13 @@ end
 private
 
 def set_user
-  @user=User.find(params[:id])
+  @user = User.find(params[:id])
   authorize @user
 end
 
 def user_params
 
-  params.require(:user).permit(:first_name, :last_name, :email, :city, :zip, :country, :education, :profile_photo, :skill_ids)
+  params.require(:user).permit(:first_name, :last_name, :email, :city, :zip, :country, :education, :profile_photo, :address, :address_line_2, :state, :skill_ids, :raw_address, :latitude, :longitude)
 end
 
 end

@@ -17,18 +17,20 @@
 
 .profile-banner {
   height: 30vh;
-  width: 80%;
+  width: 58%;
   background: linear-gradient(#36D1DC, #5B86E5);
   display: flex;
   justify-content: flex-start;
   align-items: center;
   position: relative;
+  margin-bottom: 20px;
   .user-img {
-    width: 80px;
-    height: 80px;
+    width: 160px;
+    height: 160px;
     background-size: cover;
     background-position: center;
-    margin-right: 30px;
+    margin-right: 50px;
+    margin-left: 50px;
     border-radius: 50%;
     box-shadow: 0px 6px 11px rgba(0, 0, 0, 0.30);
   }
@@ -38,6 +40,7 @@
       color: white;
       font-weight: 900;
       text-shadow: 1px 1px 2px rgba(51, 51, 51, 0.4);
+      margin-bottom: 5px;
     }
     p {
       color: white;
@@ -51,6 +54,32 @@
   top: 10px;
   right: 10px;
   color: white;
-  font-size: 20px;
+  font-size: 30px;
 }
 
+.message-me-btn {
+  position: absolute;
+  bottom: 28px;
+  right: 18px;
+  color: #6f7072;
+  font-size: 14px;
+  border-radius: 5px;
+  background-color: #f7f8f9;
+  padding-left: 5px;
+  padding-right: 5px;
+  text-align: center;
+  padding-top: 7px;
+  padding-bottom: -2px;
+}
+
+.profile-outer-container {
+  background-color: #6f7072;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+.add-skill {
+    position: absolute;
+    bottom: 0;
+    left: -180px;
+}
