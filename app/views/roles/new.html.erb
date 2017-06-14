@@ -1,13 +1,16 @@
 <div class="container">
   <div class="row" style="margin-top: 55px;">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-      <%= simple_form_for [@project, @role] do |f| %>
-        <%= f.input :name %>
-        <%= f.input :description %>
-        <%= f.association :skills, as: :check_boxes, :include_blank => false, :label_method => lambda { |skill| "#{skill.skill}" } %>
-        <%= f.input :icon, as: :attachinary %>
-        <%= f.button :submit %>
-      <% end %>
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3" style="border-radius: 8px; padding: 8px; background-color: #D3D3D3">
+      <h2><center>Create a role</center></h2>
+      <br>
+        <%= simple_form_for [@project, @role] do |f| %>
+          <%= f.input :name %>
+          <%= f.input :description %>
+          <br>
+          <%= f.association :skills, as: :check_boxes, :include_blank => false, :label_method => lambda { |skill| "#{skill.skill}" } %>
+          <%= f.input :icon, as: :attachinary %>
+          <%= f.button :submit %>
+        <% end %>
     </div>
   </div>
 </div>
