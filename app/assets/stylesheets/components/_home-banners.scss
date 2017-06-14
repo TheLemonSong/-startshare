@@ -1,38 +1,21 @@
-.top-banner {
-  align-items: center;
-  height: 12vh;
+.banner {
   color: white;
-  width: 100vw;
-  background: #304a75;
-  margin-bottom: none;
-
-  h2 {
-    color: white;
-    text-align: center;
-    padding: none;
-    vertical-align: center;
-
-  }
-  p {
-    color: white;
-    text-align:center;
-    padding: none;
-    font-size: 30px;
-    vertical-align: center;
-    font-family: georgia;
-  }
-}
-
-.info-banner {
-  width: 75%;
-  height: 400px;
-  border: none;
-  background: #d0dae8;
-  margin-top: 40px;
-  margin-bottom: 8px;
+  text-align: center;
+  height: 100vh;
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  background-size: cover !important;
+  display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  border-radius: 8px;
-  padding-bottom: 10px;
+}
+.banner h1 {
+  font-size: 109px;
+  font-weight: bold;
+  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3)
+}
+.banner p {
+  font-size: 35px;
+  font-weight: lighter;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 3px rgba(0,0,0,0.4);
 }

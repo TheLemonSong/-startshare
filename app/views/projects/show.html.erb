@@ -1,3 +1,9 @@
+
+<!-- The links below are for OpenGraph and Twitter to be able to pull the relevent info when sharing on their sites. -->
+<% content_for :meta_title, @project.name %>
+<% content_for :meta_description, @project.summary %>
+<% content_for :meta_image, cloudinary_url(@project.photo.path) %>
+
   <% if @project.photo %>
   <% photo = cl_image_path @project.photo.path %>
 <% else %>
@@ -13,7 +19,10 @@
 <div class="container-fluid banner-show-project" style="background: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= photo %>');" >
   <div class="text-center">
     <h1><%= @project.name %></h1>
-    <p><%= @project.summary %></p>
+    <p style="font-style: italic;"><%= @project.summary %></p>
+    <br>
+    <p><%= @project.details %></p>
+    <br>
     <% if @project.user == current_user %>
       <%= link_to "Add Role", new_project_role_path(@project), class: "btn btn-primary btn-lg" %>
     <% end %>
@@ -29,9 +38,10 @@
     <% end %>
   <% end %>
 </div>
+<br>
 
 <div class="container">
-  <h2 class="text-center">Available roles</h2>
+  <h2 class="text-center" style="margin-bottom: 20px; color: #708090;">Available roles</h2>
     <% if @project.roles.empty? %>
       <p class="text-center"><%= "There are no roles available for this project" %></p>
     <% else %>
