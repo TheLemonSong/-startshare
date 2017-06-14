@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   include PgSearch
+  attr_accessor :raw_address
   multisearchable against: [:skill_description, :first_name, :last_name, :city, :country]
 
   has_attachment :profile_photo
@@ -19,12 +20,23 @@ class User < ApplicationRecord
   has_many :conversations, class_name: 'Conversation', foreign_key: 'recipient_id'
 
 
-  validates :email, presence: true, uniqueness: :true
-  validates :first_name, presence: true
-  validates :last_name, presence: true
-  validates :city, presence: true
-  validates :zip, presence: :true
-  validates :country, presence: :true
+   validates :email, presence: true, uniqueness: :true
+   validates :first_name, presence: true
+   validates :last_name, presence: true
+   validates :city, presence: true
+   validates :address, presence: true
+   validates :zip, presence: :true
+   validates :country, presence: :true
+
+
+  # geocoded_by :full_address
+  geocoded_by :city
+  after_validation :geocode, if: :city_changed?
+
+
+    # def full_address
+    #   [country, city, address].compact.join(',')
+    # end
 
 end
 
