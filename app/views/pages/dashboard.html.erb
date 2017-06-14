@@ -1,40 +1,103 @@
-<div class="content-wrapper">
+<div class="content-wrapper" style="color: #e3e4e5;">
   <div class="container">
-    <br>
-    <h1 class="text-center">My Projects</h1>
-    <hr>
-    <div class="row">
-      <% if @projects.any? %>
-        <% @projects.each do |project| %>
-          <div class="col-xs-12 col-sm-4">
+    <div>
+      <% if policy(User).create? %>
+        <%= link_to "Create Project", new_project_path, class: "btn btn-primary", style: "border-radius:5px; font-weight:500; margin-top:20px; margin-bottom:10px; margin-left:-17px; background-color:#f9fafc; color:#304a75" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="container" style="min-height: 200px; background-color: #f9fafc; border-top: 1px solid #34393f; border-right: 1px solid #34393f; border-left: 1px solid #34393f;border-bottom: 1px solid #34393f; margin-bottom: 5px; border-radius: 5px;">
+    <div class="text-center">
+      <h3 style="color:#232426">My Projects</h3>
+    </div>
+      <div class="project-index-card" style="margin-bottom:10px;">
+        <div class="row">
+          <% if @projects.any? %>
+            <% @projects.each do |project| %>
+            <div class="col-xs-12 col-sm-4">
               <div class="card">
                 <%= render "projects/card", project: project %>
               </div>
-          </div>
-        <% end %>
-      <% else %>
-        <h2 class="text-center"><%= "You have no projects at the moment" %></h2>
-      <% end %>
+            </div>
+          <% end %>
+
+          <% else %>
+            <h2 class="text-center" style="color: #e3e4e5"><%= "You have no projects at the moment" %></h2>
+          <% end %>
+        </div>
+      </div>
+  </div>
+
+  <div class="container" style="min-height: 200px; background-color: #f9fafc; border-top: 1px solid #34393f; border-right: 1px solid #34393f; border-left: 1px solid #34393f;border-bottom: 1px solid #34393f; margin-bottom: 5px; border-radius: 5px;">
+    <div class="text-center">
+      <h3 style="color:#232426">My Project Applications</h3>
     </div>
-      <div class="text-center">
-        <% if policy(User).create? %>
-          <%= link_to "Create a project", new_project_path, class: "btn btn-primary btn-lg" %>
+    <!-- APPLICATIONS TO MY PROJECTS -->
+      <div class="row">
+        <% if @user_applications.empty? %>
+          <h4 class="text-center" style="color:#232426; margin-top: 10px">You have made no applications</h4>
+        <% else %>
+          <% @user_applications.each do |application| %>
+            <% if application.status == "pending" || application.status == "accepted"%>
+              <!-- card -->
+              <div class="application-card">
+              <!-- top layer -->
+                <div class="application-card-top flex">
+                  <!-- left -->
+                  <div class="application-card-top-left">
+                    <div class="flex-column" style="margin-bottom: 20px;">
+                      <h6>APPLICANT :</h6>
+                      <%= link_to user_path(application.user) do %>
+                        <h3> <%= application.user.first_name + " " + application.user.last_name %> </h3>
+                      <% end %>
+                    </div>
+                    <div class="flex-column" style="margin-bottom: 20px;">
+                      <h6>ROLE :</h6>
+                      <h3><%= application.role.name %></h3>
+                    </div>
+                    <div class="flex-column">
+                      <h6>PROJECT :</h6>
+                      <%= link_to project_path(application.role.project) do %>
+                      <h3><%= application.role.project.name %></h3>
+                      <% end %>
+                    </div>
+                  </div>
+                  <!-- middle -->
+                  <div class="application-card-top-middle flex-center">
+                    <div class="status-card">
+
+                      <% if application.status == "pending" %>
+                      <%= link_to "Accept", accept_application_path(application), class: "btn btn-primary"%>
+                      <%= link_to "Decline", decline_application_path(application), class: "btn btn-warning"%>
+                      <% else %>
+                      <%= application.status.capitalize %>
+                      <% end %>
+                    </div>
+                  </div>
+                  <!-- right -->
+                  <div class="application-card-top-right">
+                    <%= render "pages/chat", application: application %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
         <% end %>
       </div>
-      <hr>
-      <br>
+    </div>
 
-      <br>
-        <h1 class="text-center">Project Applicants</h1>
-      <br>
+    <div class="container" style="min-height: 200px; background-color: #f9fafc; border-top: 1px solid #34393f; border-right: 1px solid #34393f; border-left: 1px solid #34393f;border-bottom: 1px solid #34393f; border-radius: 5px;">
+        <div class="text-center">
+          <h3 style="color:#232426">My Role Applications</h3>
+        </div>
 
-    <!-- APPLICATIONS TO MY PROJECTS -->
-    <div class="row">
-      <% if @user_applications.empty? %>
-        <h2>You have made no applications</h2>
-      <% else %>
-        <% @user_applications.each do |application| %>
-          <% if application.status == "pending" || application.status == "accepted"%>
+      <!-- MY APPLICATIONS -->
+      <div class="row">
+        <% if current_user.applications.empty? %>
+          <h4 class="text-center" style="color:#232426; margin-top: 10px;">You have made no applications</h4>
+        <% else %>
+          <% @applications.each do |application| %>
             <!-- card -->
             <div class="application-card">
             <!-- top layer -->
@@ -42,32 +105,22 @@
                 <!-- left -->
                 <div class="application-card-top-left">
                   <div class="flex-column" style="margin-bottom: 20px;">
-                    <h6>APPLICANT :</h6>
-                    <%= link_to user_path(application.user) do %>
-                      <h3> <%= application.user.first_name + " " + application.user.last_name %> </h3>
-                    <% end %>
-                  </div>
-                  <div class="flex-column" style="margin-bottom: 20px;">
                     <h6>ROLE :</h6>
                     <h3><%= application.role.name %></h3>
                   </div>
                   <div class="flex-column">
                     <h6>PROJECT :</h6>
-                    <%= link_to project_path(application.role.project) do %>
                     <h3><%= application.role.project.name %></h3>
-                    <% end %>
+                  </div>
+                  <div class="flex-column">
+                    <h6>DESCRIPTION :</h6>
+                    <h3><%= application.role.description %></h3>
                   </div>
                 </div>
                 <!-- middle -->
                 <div class="application-card-top-middle flex-center">
                   <div class="status-card">
-
-                    <% if application.status == "pending" %>
-                    <%= link_to "Accept", accept_application_path(application), class: "btn btn-primary"%>
-                    <%= link_to "Decline", decline_application_path(application), class: "btn btn-warning"%>
-                    <% else %>
                     <%= application.status.capitalize %>
-                    <% end %>
                   </div>
                 </div>
                 <!-- right -->
@@ -78,55 +131,9 @@
             </div>
           <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
 
-      <br>
-    <h1 class="text-center">My Role Applications</h1>
-      <br>
 
-    <!-- MY APPLICATIONS -->
-    <div class="row">
-      <% if current_user.applications.empty? %>
-        <h2>You have made no applications</h2>
-      <% else %>
-        <% @applications.each do |application| %>
-          <!-- card -->
-          <div class="application-card">
-          <!-- top layer -->
-            <div class="application-card-top flex">
-              <!-- left -->
-              <div class="application-card-top-left">
-                <div class="flex-column" style="margin-bottom: 20px;">
-                  <h6>ROLE :</h6>
-                  <h3><%= application.role.name %></h3>
-                </div>
-                <div class="flex-column">
-                  <h6>PROJECT :</h6>
-                  <h3><%= application.role.project.name %></h3>
-                </div>
-                <div class="flex-column">
-                  <h6>DESCRIPTION :</h6>
-                  <h3><%= application.role.description %></h3>
-                </div>
-              </div>
-              <!-- middle -->
-              <div class="application-card-top-middle flex-center">
-                <div class="status-card">
-                  <%= application.status.capitalize %>
-                </div>
-              </div>
-              <!-- right -->
-              <div class="application-card-top-right">
-                <%= render "pages/chat", application: application %>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
 
-      <hr>
-      <br>
-  </div>
-</div>
+
