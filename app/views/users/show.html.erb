@@ -1,47 +1,45 @@
 <% if @user.profile_photo %>
-  <% photo = cl_image_path @user.profile_photo.path %>
+<% photo = cl_image_path @user.profile_photo.path %>
 <% else %>
-  <% photo = image_path 'face_placeholder.png' %>
+<% photo = image_path 'face_placeholder.png' %>
 <% end %>
 
 <div class="wrapper" style="background-color: #304a75">
-  <div class="container-fluid profile-banner">
-    <div class="user-img" style="background-image: url('<%= photo %>');">
-
-    </div>
-    <div class="user-info">
-      <h1><%= @user.first_name %> <%= @user.last_name %></h1>
-      <p><i class="fa fa-globe fa-fw"></i> <%= @user.city %>, <%= @user.country %> </p>
-      <p><i class="fa fa-graduation-cap fa-fw"></i> <%= @user.education %></p>
-    </div>
-    <% if policy(@user).update? %>
-      <%= link_to edit_user_path(@user), class: "edit-profile-btn" do %>
-        <i class="fa fa-wrench"></i>
-      <% end %>
-    <% end %>
-
-    <%= link_to edit_user_path(@user), class: "message-me-btn" do %>
-      <p><i class="fa fa-envelope-o"></i>  Message</p>
-    <% end %>
-<%= link_to new_user_skill_path, class: 'add-skill' do %>
-          <i class="fa fa-plus-circle" style="font-size: 40px; margin-left: 190px; margin-bottom: -25px; color: white;"></i>
-        <% end %>
-  </div>
-  <div class="container" style="margin-top: none; ">
-
-     <div style="display: flex-center;">
-      <h2 class="text-center"><strong></strong></h2>
-
-
-
-          <div class="row">
-            <% @skills.each do |skill| %>
-              <div class="col-xs-10 col-xs-offset-1">
-                <%= render "user_skills/card", skill: skill %>
-              </div>
-            <% end %>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-10 col-xs-offset-1">
+        <div class="profile-banner" style="margin-top: 20px;">
+          <div class="user-img" style="background-image: url('<%= photo %>');">
           </div>
+          <div class="user-info">
+            <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+            <p><i class="fa fa-globe fa-fw"></i> <%= @user.city %>, <%= @user.country %> </p>
+            <p><i class="fa fa-graduation-cap fa-fw"></i> <%= @user.education %></p>
+          </div>
+          <% if policy(@user).update? %>
+          <%= link_to edit_user_path(@user), class: "edit-profile-btn" do %>
+          <i class="fa fa-wrench"></i>
+          <% end %>
+          <% end %>
+
+          <%= link_to edit_user_path(@user), class: "message-me-btn" do %>
+          <span><i class="fa fa-envelope-o"></i>  Message</span>
+          <% end %>
+
+          <%= link_to new_user_skill_path, class: 'add-skill' do %>
+          <i class="fa fa-plus-circle" style="font-size: 40px; margin-left: 190px; margin-bottom: -25px; color: white;"></i>
+          <% end %>
         </div>
+      </div>
+    </div>
+
+    <% @skills.each do |skill| %>
+    <div class="row">
+      <div class="col-xs-10 col-xs-offset-1">
+        <%= render "user_skills/card", skill: skill %>
+      </div>
+    </div>
+    <% end %>
   </div>
 </div>
 
