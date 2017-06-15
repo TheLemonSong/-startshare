@@ -1,0 +1,64 @@
+.application-card {
+  display: flex;
+  height: 200px;
+  width: 100%;
+  background: #F7F7F7;
+  align-items: center;
+  margin: 10px auto;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+.application-card-left {
+  padding: 0 20px;
+  .application-card-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+.application-card-middle {
+  padding: 20px 10px;
+  flex: 1 0 auto;
+  align-self: flex-start;
+  .application-content {
+    small {
+      padding-left: 10px;
+    }
+  }
+  .application-info {
+    display: flex;
+    padding: 10px 0;
+    span {
+
+      font-weight: 900;
+      font-family: monospace;
+    }
+    .pending {
+      color: orange;
+    }
+    .accepted {
+      color: #3cd070;
+    }
+    .declined {
+      color: #D23333;
+    }
+
+  }
+}
+
+.application-card-right {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  align-items: flex-end;
+}
+
+.application-controls {
+  display: flex;
+  flex-direction: column;
+}
