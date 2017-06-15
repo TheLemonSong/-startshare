@@ -39,17 +39,11 @@
   }
 }
 
-
-
-
-
-.projects-banner {
-  height: 30vh;
-  width: 73%;
-  background: linear-gradient(#36D1DC, #5B86E5);
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+.proj-dashboard {
   position: relative;
-  margin-bottom: 20px;
-  margin-top: 55px;
+}
+.create {
+  position: absolute;
+  top: 0px;
+  right: 1px;
+}
