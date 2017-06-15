@@ -32,14 +32,18 @@
 
   <div class="container">
     <h1><%= @project.name %></h1>
-    <p style="font-style: italic;"><%= @project.summary %></p>
+    <p style="color: white; font-weight: 300"><%= @project.summary %></p>
+    <h4 style="color: white;"><%= @project.located %></h4>
+    <!-- <i class="fa fa-calendar" aria-hidden="true" style="color:white; margin-top: 18px;"> <%= @project.start_date %> </i> -->
   </div>
+
 </div>
 
 <br>
 
-<div class="container" style="min-height: 100px; background-color: #f9fafc; border-top: 1px solid #34393f; border-right: 1px solid #34393f; border-left: 1px solid #34393f;border-bottom: 1px solid #34393f; margin-bottom: 30px; border-radius: 5px;">
+<div class="container" style="min-height: 100px; background-color: #f9fafc; border-top: .5px solid #b6b7ba; border-right: .5px solid #b6b7ba; border-left: .5px solid #b6b7ba;border-bottom: .5px solid #b6b7ba; margin-top: 10px; margin-bottom: 30px; border-radius: 5px;">
   <p><%= @project.details %></p>
+
 </div>
 
 <div class="container">
