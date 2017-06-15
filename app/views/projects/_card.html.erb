@@ -5,11 +5,11 @@
 <% end %>
 
 <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= photo %>'); margin-top:5px;">
-  <div class="card-category">Projects</div>
-  <div class="card-description">
-    <h2><%= project.name %></h2>
-    <p><%= project.summary %></p>
-  </div>
+  <div class="card-category"></div>
+    <div class="card-description">
+      <h2><%= project.name %></h2>
+      <p><%= project.summary %></p>
+    </div>
   <%= link_to "", project_path(project), class: "card-link"  %>
 </div>
 

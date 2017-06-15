@@ -1,42 +1,40 @@
-<div class="content-wrapper" style="color: #e3e4e5;">
-  <div class="container">
-    <div>
-      <% if policy(User).create? %>
-        <%= link_to "Create Project", new_project_path, class: "btn btn-primary", style: "border-radius:5px; font-weight:500; margin-top:20px; margin-bottom:10px; margin-left:-17px; background-color:#f9fafc; color:#304a75" %>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="container" style="min-height: 200px; background-color: #f9fafc; border-top: 1px solid #34393f; border-right: 1px solid #34393f; border-left: 1px solid #34393f;border-bottom: 1px solid #34393f; margin-bottom: 5px; border-radius: 5px;">
-    <div class="text-center">
-      <h3 style="color:#232426">My Projects</h3>
-    </div>
-      <div class="project-index-card" style="margin-bottom:10px;">
+<div class="content-wrapper">
+  <h1 class="hidden">Dashboard</h1>
+    <div class="container">
+      <br>
+      <div class="proj-dashboard">
+        <h2>My Projects</h2>
+        <br>
         <div class="row">
           <% if @projects.any? %>
             <% @projects.each do |project| %>
-            <div class="col-xs-12 col-sm-4">
-              <div class="card">
-                <%= render "projects/card", project: project %>
+              <div class="col-xs-12 col-sm-4">
+                  <div class="card">
+                    <%= render "projects/card", project: project %>
+                  </div>
               </div>
-            </div>
-          <% end %>
-
+            <% end %>
           <% else %>
-            <h2 class="text-center" style="color: #e3e4e5"><%= "You have no projects at the moment" %></h2>
+            <h3 class="text-center"><%= "You have no projects at the moment" %></h3>
           <% end %>
         </div>
-      </div>
-  </div>
+          <div class="create">
+            <% if policy(User).create? %>
+              <%= link_to "Create a project", new_project_path, class: "btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+        </div>
+        <hr>
+        <br>
 
-  <div class="container" style="min-height: 200px; background-color: #f9fafc; border-top: 1px solid #34393f; border-right: 1px solid #34393f; border-left: 1px solid #34393f;border-bottom: 1px solid #34393f; margin-bottom: 5px; border-radius: 5px;">
-    <div class="text-center">
-      <h3 style="color:#232426">My Project Applications</h3>
-    </div>
-    <!-- APPLICATIONS TO MY PROJECTS -->
+        <br>
+          <h2>Project Applicants</h2>
+        <br>
+
+      <!-- APPLICATIONS TO MY PROJECTS -->
       <div class="row">
         <% if @user_applications.empty? %>
-          <h4 class="text-center" style="color:#232426; margin-top: 10px">You have made no applications</h4>
+          <h3 class="text-center">You have no applicants to review</h3>
         <% else %>
           <% @user_applications.each do |application| %>
             <% if application.status == "pending" || application.status == "accepted"%>
@@ -85,17 +83,15 @@
           <% end %>
         <% end %>
       </div>
-    </div>
-
-    <div class="container" style="min-height: 200px; background-color: #f9fafc; border-top: 1px solid #34393f; border-right: 1px solid #34393f; border-left: 1px solid #34393f;border-bottom: 1px solid #34393f; border-radius: 5px;">
-        <div class="text-center">
-          <h3 style="color:#232426">My Role Applications</h3>
-        </div>
+        <hr>
+        <br>
+      <h2>My Role Applications</h2>
+        <br>
 
       <!-- MY APPLICATIONS -->
       <div class="row">
         <% if current_user.applications.empty? %>
-          <h4 class="text-center" style="color:#232426; margin-top: 10px;">You have made no applications</h4>
+          <h3 class="text-center">You have made no applications</h3>
         <% else %>
           <% @applications.each do |application| %>
             <!-- card -->
@@ -132,8 +128,6 @@
           <% end %>
         <% end %>
       </div>
+      <br>
     </div>
-
-
-
-
+</div>
