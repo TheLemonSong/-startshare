@@ -15,7 +15,11 @@
             <%= f.input :first_name, required: true, autofocus: true %>
             <%= f.input :last_name %>
             <%= f.input :education %>
+            <%= f.input :address %>
+            <%= f.input :address_line_2 %>
             <%= f.input :city %>
+            <%= f.input :state %>
+            <%= f.input :zip %>
             <%= f.input :country, priority: ["US", "GB", "FR", "DE"], include_blank: 'Select a country' %>
             <%= f.input :email %>
             <%= f.input :password, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>

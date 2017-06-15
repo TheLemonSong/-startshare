@@ -7,7 +7,24 @@
           <%= f.input :name %>
           <%= f.input :description %>
           <br>
-          <%= f.association :skills, as: :check_boxes, :include_blank => false, :label_method => lambda { |skill| "#{skill.skill}" } %>
+
+          <div class="form-group check_boxes optional role_skills">
+            <label class="control-label check_boxes optional">
+              Skills
+            </label>
+            <input type="hidden" name="role[skill_ids][]" value="">
+            <div class="skill-choices">
+            <% Skill.all.each do |skill| %>
+                <input class="hidden" type="checkbox" value="<%= skill.id %>" name="role[skill_ids][]" id="role_skill_ids_<%= skill.id %>">
+                <label  class="skill-choice" for="role_skill_ids_<%= skill.id %>">
+                  <%= skill.skill %> <i class="fa fa-check"></i>
+                  <%= image_tag skill.photo, class: "avatar-square" %>
+                </label>
+            <% end %>
+            </div>
+          </div>
+
+
           <%= f.input :icon, as: :attachinary %>
           <%= f.button :submit %>
         <% end %>

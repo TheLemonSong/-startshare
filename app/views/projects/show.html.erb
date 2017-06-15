@@ -16,35 +16,42 @@
   <% profile = image_path 'face_placeholder.png' %>
 <% end %>
 
-<div class="container-fluid banner-show-project" style="background: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= photo %>');" >
-  <div class="text-center">
-    <h1><%= @project.name %></h1>
-    <p style="font-style: italic;"><%= @project.summary %></p>
-    <br>
-    <p><%= @project.details %></p>
-    <br>
-    <% if @project.user == current_user %>
-      <%= link_to "Add Role", new_project_role_path(@project), class: "btn btn-primary btn-lg" %>
-    <% end %>
-  </div>
-  <div class="project-user-banner">
-    <div class="avatar" style="background-image: url('<%= profile %>');"></div>
-    <h3><%= @project.user.first_name %> <%= @project.user.last_name %></h3>
+<div class="banner-show-project" style="background: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= photo %>');" >
 
-  </div>
   <% if @project.user == current_user %>
     <%= link_to edit_project_path(@project), class: "edit-project" do %>
       <i class="fa fa-wrench"></i>
     <% end %>
   <% end %>
+
+  <div class="container">
+    <h1><%= @project.name %></h1>
+    <p style="font-style: italic;"><%= @project.summary %></p>
+  </div>
 </div>
+
 <br>
 
+<div class="container" style="min-height: 100px; background-color: #f9fafc; border-top: 1px solid #34393f; border-right: 1px solid #34393f; border-left: 1px solid #34393f;border-bottom: 1px solid #34393f; margin-bottom: 30px; border-radius: 5px;">
+  <p><%= @project.details %></p>
+</div>
+
 <div class="container">
-  <h2 class="text-center" style="margin-bottom: 20px; color: #708090;">Available roles</h2>
+  <div class="roles-text">
+    <h2 class="text-center" style="margin-bottom: 20px; color: #708090;">Available roles</h2>
+
+    <% if @project.user == current_user %>
+      <%= link_to new_project_role_path(@project) do %>
+        <i class="fa fa-plus-circle" style="font-size: 40px; color: black;"></i>
+      <% end %>
+    <% end %>
+  </div>
     <% if @project.roles.empty? %>
       <p class="text-center"><%= "There are no roles available for this project" %></p>
     <% else %>
+    <hr>
+
+
 
 
       <% @project.roles.each do |role| %>
