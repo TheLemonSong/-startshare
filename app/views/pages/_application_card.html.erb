@@ -1,0 +1,78 @@
+<!-- card -->
+<div class="application-card">
+<% if application.role.icon %>
+  <% icon = cl_image_path application.role.icon.path %>
+<% else %>
+  <% icon = image_path "background.jpg" %>
+<% end %>
+
+  <div class="application-card-left">
+    <div class="application-card-img" style="background-image: url('<%= icon %>')"></div>
+  </div>
+  <div class="application-card-middle">
+    <div class="application-content">
+    <% if applicant %>
+      <h3><%= link_to (application.user.first_name + " " + application.user.last_name), user_path(application.user) %><small><%= link_to application.role.project.name, project_path(application.role.project)  %></small></h3>
+    <% else %>
+      <h3><%= application.role.name %><small><%= link_to application.role.project.name, project_path(application.role.project)  %></small></h3>
+      <% end %>
+      <div class="application-info">
+      <% if application.status.capitalize == "Accepted" %>
+        <% status_class = "accepted" %>
+      <% elsif application.status.capitalize == "Declined" %>
+        <% status_class = "declined" %>
+      <% else %>
+        <% status_class = "pending" %>
+      <% end %>
+        <span class="<%= status_class %>"><%= application.status.capitalize %></span>
+      </div>
+      <% if applicant %>
+        <h4><%= application.role.name %></h4>
+      <% end %>
+      <p><%= application.role.description %></p>
+
+    </div>
+  </div>
+  <div class="application-card-right">
+    <div class="application-controls">
+      <% if current_user == application.role.project.user %>
+
+      <% if application.status == "pending" %>
+      <%= link_to accept_application_path(application), class: "btn btn-success" do %>
+        <i class="fa fa-check" aria-hidden="true"></i>
+      <% end %>
+      <%= link_to decline_application_path(application), class: "btn btn-danger" do%>
+      <i class="fa fa-times" aria-hidden="true"></i>
+
+      <% end %>
+      <% end %>
+    <% end %>
+    <%# render "pages/chat", application: application %>
+
+    </div>
+    <div class="application-chat">
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#chat<%= application.id %>">
+        <i class="fa fa-comments-o" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="chat<%= application.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <%= render "pages/chat", application: application %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,15 +1,27 @@
 <% app_conversation = Conversation.between(application.user.id, application.role.project.user.id).where(application: application).first %>
 <% if app_conversation %>
-
   <div class="chat-container">
     <div class="messages-container">
       <% app_conversation.messages.each do |msg| %>
       <div class="message">
 
       <% if msg.user == current_user %>
-        <p class="text-right"><%= msg.body %> [<%= msg.user.first_name %>]</p>
+
+        <% if msg.user.profile_photo %>
+          <% profile_pic = cl_image_path msg.user.profile_photo.path %>
+        <% else %>
+          <% profile_pic = image_path "face_placeholder.png" %>
+        <% end %>
+        <p class="text-right"><%= msg.body %> <%= image_tag profile_pic, class: "avatar" %></p>
+
       <% else %>
-      <p class="text-left">[<%= msg.user.first_name %>] <%= msg.body %></p>
+
+        <% if msg.user.profile_photo %>
+          <% profile_pic = cl_image_path msg.user.profile_photo.path %>
+        <% else %>
+          <% profile_pic = image_path "face_placeholder.png" %>
+        <% end %>
+      <p class="text-left"><%= image_tag profile_pic, class: "avatar" %> <%= msg.body %></p>
       <% end %>
 
       </div>
