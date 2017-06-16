@@ -1,9 +1,9 @@
-<div class="content-wrapper">
+<div class="content-wrapper" style="background-color: #EEEEEE">
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-sm-offset-3" style="margin-top: 100px;">
         <div class="text-center">
-        <h2>Log in</h2>
+        <h2 style="color: #595a5b">Log in</h2>
         </div>
 
         <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -15,7 +15,7 @@
           </div>
 
           <div class="form-actions">
-            <%= f.submit "Log In", class: "btn btn-primary" %>
+            <%= f.submit "Log In", class: "btn btn-primary", style: "border:none; background-color:#2f3f59" %>
           </div>
         <% end %>
       </div>
@@ -23,7 +23,7 @@
   </div>
 </div>
 
-<div class="text-center" style="margin-top: -75px;">
+<div class="text-center" style="margin-top: -45px">
 <%= render "devise/shared/links" %>
 </div>
 

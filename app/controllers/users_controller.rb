@@ -30,7 +30,7 @@ def update
 end
 
 def show
-  @skills = current_user.skills
+  @skills = @user.skills
 
   @user_coordinates = { lat: @user.latitude, lng: @user.longitude }
 

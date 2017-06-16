@@ -1,10 +1,10 @@
-<div class="content-wrapper">
+<div class="content-wrapper" style="background-color: #EEEEEE;">
   <h1 class="hidden">Dashboard</h1>
     <div class="container">
       <br>
-      <div class="proj-dashboard">
+      <div class="proj-dashboard" style="color: #595a5b;">
         <h2>My Projects</h2>
-        <br>
+        <br style="color: black;">
         <div class="row">
           <% if @projects.any? %>
             <% @projects.each do |project| %>
@@ -15,26 +15,26 @@
               </div>
             <% end %>
           <% else %>
-            <h3 class="text-center"><%= "You have no projects at the moment" %></h3>
-          <% end %>
+            <h5 class="text-left" style="color: #595a5b; margin-left: 15px;">No Projects at this time</h5
+            <% end %>
         </div>
           <div class="create">
             <% if policy(User).create? %>
-              <%= link_to "Create a project", new_project_path, class: "btn btn-primary btn-lg" %>
+              <%= link_to "Create New", new_project_path, class: "btn btn-primary btn-lg", style: "border: none; background-color: #2f3f59; border-radius: 5px;" %>
             <% end %>
           </div>
         </div>
-        <hr>
+        <hr style="color: black;">
         <br>
 
         <br>
-          <h2>Project Applicants</h2>
+          <h2 style="color: #595a5b;">Project Applicants</h2>
         <br>
 
       <!-- APPLICATIONS TO MY PROJECTS -->
       <div class="row">
         <% if @user_applications.empty? %>
-          <h3 class="text-center">You have no applicants to review</h3>
+          <h5 class="text-left" style="color: #595a5b; margin-left: 15px;">No Applications</h5>
         <% else %>
           <% @user_applications.each do |application| %>
             <% unless application.status.capitalize == "Declined" %>
@@ -45,13 +45,13 @@
       </div>
         <hr>
         <br>
-      <h2>My Role Applications</h2>
+      <h2 style="color: #595a5b;">My Role Applications</h2>
         <br>
 
       <!-- MY APPLICATIONS -->
       <div class="row">
         <% if current_user.applications.empty? %>
-          <h3 class="text-center">You have made no applications</h3>
+          <h5 class="text-left" style="color: #595a5b; margin-left: 15px;">No Applications</h5>
         <% else %>
           <% @applications.each do |application| %>
             <%= render "pages/application_card", application: application, applicant: false %>

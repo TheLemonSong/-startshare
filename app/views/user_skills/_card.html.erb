@@ -2,7 +2,7 @@
   <div class="skill-card-left flex-column">
     <% if policy(@user).update? %>
       <h1><%= skill.skill %>
-        <% user_skill = skill.user_skills.where(user: current_user).first %>
+        <% user_skill = skill.user_skills.where(user: @user).first %>
         <%= link_to edit_user_skill_path(user_skill) do %>
           <i class="fa fa-pencil" aria-hidden="true" style="color: #acadaf"></i>
         <% end %>
@@ -10,9 +10,9 @@
     <% else %>
       <h1><%= skill.skill %></h1>
     <% end %>
-    <h4>Years  <%= skill.user_skills.where(user_id: current_user.id).first.years.to_i %></h4>
+    <h4>Years  <%= skill.user_skills.where(user_id: @user.id).first.years.to_i %></h4>
     <h6 style="text-decoration: underline; color: black">EXPERIENCE</h6>
-    <p><%= skill.user_skills.where(user_id: current_user.id)[0].description %></p>
+    <p><%= skill.user_skills.where(user_id: @user.id)[0].description %></p>
   </div>
 
   <%= cl_image_tag skill.photo, width: 60, class: 'skill-photo' %>
