@@ -1,8 +1,13 @@
 
 <!-- The links below are for OpenGraph and Twitter to be able to pull the relevent info when sharing on their sites. -->
+<% if @project.photo %>
+  <% img = cl_image_path @project.photo.path %>
+<% else %>
+  <% img = image_path 'background.jpg' %>
+<% end %>
 <% content_for :meta_title, @project.name %>
 <% content_for :meta_description, @project.summary %>
-<% content_for :meta_image, cloudinary_url(@project.photo.path) %>
+<% content_for :meta_image, cloudinary_url(img) %>
 
   <% if @project.photo %>
   <% photo = cl_image_path @project.photo.path %>
@@ -41,7 +46,8 @@
 
 <br>
 
-<div class="container" style="min-height: 100px; background-color: #f9fafc; border-top: .5px solid #b6b7ba; border-right: .5px solid #b6b7ba; border-left: .5px solid #b6b7ba;border-bottom: .5px solid #b6b7ba; margin-top: 10px; margin-bottom: 30px; border-radius: 5px;">
+<div class="container" style="min-height: 100px; background-color: #f9fafc; margin-top: 10px; margin-bottom: 30px; border-radius: 5px; padding: 10px; box-shadow: 2px 2px 3px rgba(0,0,0,0.2)">
+  <h3 style="margin-bottom: 20px;">What we're about</h3 style="margin-bottom: 20px;">
   <p><%= @project.details %></p>
 
 </div>
