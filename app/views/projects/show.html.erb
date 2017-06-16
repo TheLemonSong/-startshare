@@ -15,7 +15,7 @@
 <% else %>
   <% profile = image_path 'face_placeholder.png' %>
 <% end %>
-
+<div class="wrapper" style="background-color: #EEEEEE">
 <div class="banner-show-project" style="background: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= photo %>');" >
 
   <% if @project.user == current_user %>
@@ -34,7 +34,7 @@
     <h1><%= @project.name %></h1>
     <p style="color: white; font-weight: 300"><%= @project.summary %></p>
     <h4 style="color: white;"><%= @project.located %></h4>
-    <!-- <i class="fa fa-calendar" aria-hidden="true" style="color:white; margin-top: 18px;"> <%= @project.start_date %> </i> -->
+    <i class="fa fa-calendar" aria-hidden="true" style="color:white; font-size: 25px;text-decoration-style: bold; margin-top: 25px;"> <%= @project.start_date %> </i>
   </div>
 
 </div>
@@ -48,18 +48,18 @@
 
 <div class="container">
   <div class="roles-text">
-    <h2 class="text-center" style="margin-bottom: 20px; color: #708090;">Available roles</h2>
+    <h2 class="text-center" style="margin-bottom: 12px; color: #595a5b;">Available roles</h2>
 
     <% if @project.user == current_user %>
       <%= link_to new_project_role_path(@project) do %>
-        <i class="fa fa-plus-circle" style="font-size: 40px; color: black;"></i>
+        <i class="fa fa-plus-circle" style="font-size: 40px; color: #2f3f59;"></i>
       <% end %>
     <% end %>
   </div>
     <% if @project.roles.empty? %>
       <p class="text-center"><%= "There are no roles available for this project" %></p>
     <% else %>
-    <hr>
+    <hr style="color: #2e3033">
 
 
 
@@ -100,14 +100,14 @@
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
-            <div class="modal-body">
-              <h2 class="modal-title">Apply to <%= role.name %></h2>
+            <div class="text-center modal-body" style="height: 350px;">
+              <h2 class="modal-title" style="margin-bottom: 30px;">Apply to <%= role.name %></h2>
               <%= simple_form_for [role, @application] do |f| %>
-                <%= text_area_tag :cover_message %>
-                <%= f.submit :Apply %>
-               <% end %>
+              <%= f.input :cover_message, input_html: {rows: '10'} %>
+              <div style="margin-top: 8px;"> <%= f.submit :Apply, class: "btn btn-primary" %> </div>
+              <% end %>
 
-              <%= link_to 'Back to dashboard', dashboard_path, class: "btn btn-success" %>
+
             </div>
           </div>
         </div>
@@ -115,6 +115,6 @@
     <% end %>
   <% end %>
 </div>
-
+</div>
 <!-- Modal -->
 

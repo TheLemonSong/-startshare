@@ -1,23 +1,23 @@
-<div class="content-wrapper">
+<div class="content-wrapper" style="background-color: #EEEEEE">
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-        <h1>Edit your project</h1>
+        <h1 class="text-center" style="color: #595a5b;">Edit Project</h1>
 
         <%= simple_form_for(@project) do |f| %>
           <%= f.input :name %>
           <%= f.input :summary %>
-          <%= f.input :details %>
+          <%= f.input :details, :as => :text %>
           <%= f.input :located %>
           <%= f.input :start_date %>
           <%= f.input :end_date %>
           <%= f.input :stage %>
           <%= f.input :photo, as: :attachinary %>
 
-        <div class="button-flex">
-          <%= f.submit "Update", class: "btn btn-primary" %>
+        <div class="button-flex" style="margin-bottom: 14px;">
+          <%= f.submit "Update", class: "btn btn-primary", style: "background-color: #2f3f59; border: none;" %>
         <% end %>
-        <%= button_to "Delete", project_path(@project), method: :delete, class: "btn btn-warning" %>
+        <%= button_to "Delete", project_path(@project), method: :delete, class: "btn btn-warning", style: "background-color: #2f3f59; border: none;" %>
         </div>
      </div>
     </div>

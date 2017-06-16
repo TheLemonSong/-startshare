@@ -1,6 +1,6 @@
 <% app_conversation = Conversation.between(application.user.id, application.role.project.user.id).where(application: application).first %>
 <% if app_conversation %>
-  <div class="chat-container">
+  <div class="chat-container" style="height: 225px;">
     <div class="messages-container">
       <% app_conversation.messages.each do |msg| %>
       <div class="message">
@@ -27,12 +27,12 @@
       </div>
       <% end %>
     </div>
-    <div class="message-input">
+    <div class="message-input text-center">
       <%= simple_form_for [application.conversation, application.conversation.messages.new] do |f| %>
         <div class="form-inline">
-          <%= f.input :body, label: false %>
+          <%= f.input :body, label: false, input_html: { rows: '5', :style=> 'width: 350px' } %>
           <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
-          <%= f.submit "Send", class: "btn btn-default" %>
+          <div style="margin-top: 12px;"><%= f.submit "Send", class: "btn btn-primary" %></div>
         </div>
       <% end %>
     </div>
