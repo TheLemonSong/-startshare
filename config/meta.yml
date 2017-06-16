@@ -3,5 +3,5 @@
 meta_product_name: "StartShare"
 meta_title: "Startshare - Connecting ideas with makers!"
 meta_description: "StartShare is a new way to connect with people who can make your start-up idea come to life."
-meta_image: "startshare-logo.png"                       # should exist in `app/assets/images/`
+meta_image: "startshare_fb_sharer.png"                       # should exist in `app/assets/images/`
 twitter_account: "@startshare"   # required for Twitter Cards
