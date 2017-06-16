@@ -1,5 +1,5 @@
-<div class="edit-wrapper" style="background: #f2f2f2">
-  <div class="content-wrapper">
+<div class="edit-wrapper">
+  <div class="content-wrapper" style="background-color: #EEEEEE">
     <div class="container">
       <div class="row">
         <div class="col-xs-12 col-sm-6 col-sm-offset-3">
@@ -17,7 +17,8 @@
             <%= f.input :country %>
             <%= f.input :education %>
             <%= f.input :profile_photo, as: :attachinary %>
-            <%= f.submit :update %>
+            <%= f.submit class: "btn btn-primary", style: "border:none; background-color: #2f3f59; margin-bottom: 25px;" %>
+
           <% end %>
         </div>
       </div>

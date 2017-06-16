@@ -30,6 +30,9 @@
   color: #708090;
 }
 
+.content-wrapper-footer {
+  min-height: calc(100vh - 85px)
+}
 // Flexbox
 .flex {
   display: flex;
