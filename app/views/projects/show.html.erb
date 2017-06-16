@@ -109,7 +109,7 @@
             <div class="text-center modal-body" style="height: 350px;">
               <h2 class="modal-title" style="margin-bottom: 30px;">Apply to <%= role.name %></h2>
               <%= simple_form_for [role, @application] do |f| %>
-              <%= f.input :cover_message, input_html: {rows: '10'} %>
+              <%= f.input :cover_message, input_html: {rows: '6'} %>
               <div style="margin-top: 8px;"> <%= f.submit :Apply, class: "btn btn-primary" %> </div>
               <% end %>
 
