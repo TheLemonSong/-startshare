@@ -23,10 +23,10 @@ class User < ApplicationRecord
    validates :email, presence: true, uniqueness: :true
    validates :first_name, presence: true
    validates :last_name, presence: true
-   validates :city, presence: true
-   validates :address, presence: true
-   validates :zip, presence: :true
-   validates :country, presence: :true
+   # validates :city, presence: true
+   # validates :address, presence: true
+   # validates :zip, presence: :true
+   # validates :country, presence: :true
 
 
   # geocoded_by :full_address
