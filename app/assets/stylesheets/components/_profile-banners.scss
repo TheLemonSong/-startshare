@@ -22,14 +22,15 @@
   align-items: center;
   position: relative;
   margin-bottom: 20px;
+  border-radius: 5px;
+
 
   .user-img {
     width: 160px;
     height: 160px;
     background-size: cover;
     background-position: center;
-    margin-right: 50px;
-    margin-left: 50px;
+    margin: 7px 50px;
     border-radius: 50%;
     box-shadow: 0px 6px 11px rgba(0, 0, 0, 0.30);
   }
